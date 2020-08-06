@@ -19,6 +19,7 @@
         <ContentView x:Name="TabItemContentView" />
 
         <FlexLayout
+            x:Name="TabBar"
             Padding="15,0"
             AbsoluteLayout.LayoutBounds="0,1,1,80"
             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
