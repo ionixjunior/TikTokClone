@@ -39,6 +39,38 @@ namespace TikTokClone.Views
 
         private void OnTabTapped(object sender, TappedEventArgs args)
         {
+            if (args.Parameter is TabItem tabItem)
+            {
+                if (tabItem.DataTemplateType == typeof(TabItemHomeView))
+                {
+                    TabItemContentView.Content = _homeView.Value;
+                    return;
+                }
+
+                if (tabItem.DataTemplateType == typeof(TabItemDiscoverView))
+                {
+                    TabItemContentView.Content = _discoverView.Value;
+                    return;
+                }
+
+                if (tabItem.DataTemplateType == typeof(TabItemAddView))
+                {
+                    TabItemContentView.Content = _addView.Value;
+                    return;
+                }
+
+                if (tabItem.DataTemplateType == typeof(TabItemInboxView))
+                {
+                    TabItemContentView.Content = _inboxView.Value;
+                    return;
+                }
+
+                if (tabItem.DataTemplateType == typeof(TabItemMeView))
+                {
+                    TabItemContentView.Content = _meView.Value;
+                    return;
+                }
+            }
         }
     }
 }
