@@ -22,7 +22,9 @@ namespace TikTokClone.Views
         private readonly Lazy<TabItemAddView> _addView;
         private readonly Lazy<TabItemInboxView> _inboxView;
         private readonly Lazy<TabItemMeView> _meView;
-
+        private Color _tabBarTransparent = Color.Transparent;
+        private Color _tabBarWhite = Color.White;
+        
         public MainView()
         {
             InitializeComponent();
