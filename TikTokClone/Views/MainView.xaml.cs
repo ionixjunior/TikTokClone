@@ -36,6 +36,7 @@ namespace TikTokClone.Views
             _meView = new Lazy<TabItemMeView>();
 
             TabItemContentView.Content = _homeView.Value;
+            TabBar.BackgroundColor = _tabBarTransparent;
             BindingContext = new MainViewModel();
         }
 
