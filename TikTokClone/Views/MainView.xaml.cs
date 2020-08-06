@@ -17,9 +17,22 @@ namespace TikTokClone.Views
     [DesignTimeVisible(false)]
     public partial class MainView : ContentPage
     {
+        private readonly Lazy<TabItemHomeView> _homeView;
+        private readonly Lazy<TabItemDiscoverView> _discoverView;
+        private readonly Lazy<TabItemAddView> _addView;
+        private readonly Lazy<TabItemInboxView> _inboxView;
+        private readonly Lazy<TabItemMeView> _meView;
+
         public MainView()
         {
             InitializeComponent();
+
+            _homeView = new Lazy<TabItemHomeView>();
+            _discoverView = new Lazy<TabItemDiscoverView>();
+            _addView = new Lazy<TabItemAddView>();
+            _inboxView = new Lazy<TabItemInboxView>();
+            _meView = new Lazy<TabItemMeView>();
+
             BindingContext = new MainViewModel();
         }
 
