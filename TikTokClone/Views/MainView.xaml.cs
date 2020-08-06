@@ -37,7 +37,7 @@ namespace TikTokClone.Views
             BindingContext = new MainViewModel();
         }
 
-        private void OnTabTapped(object sender, EventArgs args)
+        private void OnTabTapped(object sender, TappedEventArgs args)
         {
         }
     }
