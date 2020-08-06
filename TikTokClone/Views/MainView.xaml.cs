@@ -39,7 +39,7 @@ namespace TikTokClone.Views
 
         private void OnTabTapped(object sender, EventArgs args)
         {
-            if (args.Parameter is TabItem tabItem)
+            if (args is TappedEventArgs tappedEventArgs && tappedEventArgs.Parameter is TabItem tabItem)
             {
                 if (tabItem.DataTemplateType == typeof(TabItemHomeView))
                 {
