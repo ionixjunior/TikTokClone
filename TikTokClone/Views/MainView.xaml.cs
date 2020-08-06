@@ -47,30 +47,35 @@ namespace TikTokClone.Views
                 if (tabItem.DataTemplateType == typeof(TabItemHomeView))
                 {
                     TabItemContentView.Content = _homeView.Value;
+                    TabBar.BackgroundColor = _tabBarTransparent;
                     return;
                 }
 
                 if (tabItem.DataTemplateType == typeof(TabItemDiscoverView))
                 {
                     TabItemContentView.Content = _discoverView.Value;
+                    TabBar.BackgroundColor = _tabBarWhite;
                     return;
                 }
 
                 if (tabItem.DataTemplateType == typeof(TabItemAddView))
                 {
                     TabItemContentView.Content = _addView.Value;
+                    TabBar.BackgroundColor = _tabBarWhite;
                     return;
                 }
 
                 if (tabItem.DataTemplateType == typeof(TabItemInboxView))
                 {
                     TabItemContentView.Content = _inboxView.Value;
+                    TabBar.BackgroundColor = _tabBarWhite;
                     return;
                 }
 
                 if (tabItem.DataTemplateType == typeof(TabItemMeView))
                 {
                     TabItemContentView.Content = _meView.Value;
+                    TabBar.BackgroundColor = _tabBarWhite;
                     return;
                 }
             }
