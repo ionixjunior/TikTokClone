@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TikTokClone.Views.MainView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contentViews="clr-namespace:TikTokClone.ContentViews"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:templates="clr-namespace:TikTokClone.Templates"
+    x:Name="View"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <templates:TabItemDataTemplateSelector x:Key="TabsTemplate" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <!--
+        <CarouselView
+            CurrentItem="{Binding CurrentTab}"
+            HorizontalScrollBarVisibility="Never"
+            IsScrollAnimated="false"
+            IsSwipeEnabled="false"
+            ItemTemplate="{StaticResource TabsTemplate}"
+            ItemsSource="{Binding Tabs}"
+            PositionChangedCommand="{Binding PositionChangedCommand}" />
+        -->
+        <CarouselView>
+            <CarouselView.ItemsSource>
+                <x:Array Type="{x:Type View}">
+                    <contentViews:TabItemHomeView />
+                    <contentViews:TabItemDiscoverView />
+                    <contentViews:TabItemAddView />
+                    <contentViews:TabItemInboxView />
+                    <contentViews:TabItemMeView />
+                </x:Array>
+            </CarouselView.ItemsSource>
+        </CarouselView>
+
+        <FlexLayout
+            Padding="15,0"
+            AbsoluteLayout.LayoutBounds="0,1,1,80"
+            AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
+            AlignItems="Center"
+            BackgroundColor="{Binding TabBackground}"
+            BindableLayout.ItemsSource="{Binding Tabs}"
+            JustifyContent="SpaceBetween">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <FlexLayout
+                        AlignItems="Center"
+                        FlexLayout.Grow="1"
+                        JustifyContent="Center">
+                        <FlexLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TabTappedCommand, Source={x:Reference View}}" CommandParameter="{Binding .}" />
+                        </FlexLayout.GestureRecognizers>
+
+                        <Label Text="{Binding Name}" />
+                    </FlexLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+    </AbsoluteLayout>
+</ContentPage>
