@@ -33,6 +33,7 @@ namespace TikTokClone.Views
             _inboxView = new Lazy<TabItemInboxView>();
             _meView = new Lazy<TabItemMeView>();
 
+            TabItemContentView.Content = _homeView.Value;
             BindingContext = new MainViewModel();
         }
 
