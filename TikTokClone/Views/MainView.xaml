@@ -16,17 +16,7 @@
     </ContentPage.Resources>
 
     <AbsoluteLayout>
-        <CarouselView>
-            <CarouselView.ItemsSource>
-                <x:Array Type="{x:Type View}">
-                    <contentViews:TabItemHomeView />
-                    <contentViews:TabItemDiscoverView />
-                    <contentViews:TabItemAddView />
-                    <contentViews:TabItemInboxView />
-                    <contentViews:TabItemMeView />
-                </x:Array>
-            </CarouselView.ItemsSource>
-        </CarouselView>
+        <ContentView x:Name="TabItemContentView" />
 
         <FlexLayout
             Padding="15,0"
