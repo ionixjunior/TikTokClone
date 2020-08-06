@@ -16,16 +16,6 @@
     </ContentPage.Resources>
 
     <AbsoluteLayout>
-        <!--
-        <CarouselView
-            CurrentItem="{Binding CurrentTab}"
-            HorizontalScrollBarVisibility="Never"
-            IsScrollAnimated="false"
-            IsSwipeEnabled="false"
-            ItemTemplate="{StaticResource TabsTemplate}"
-            ItemsSource="{Binding Tabs}"
-            PositionChangedCommand="{Binding PositionChangedCommand}" />
-        -->
         <CarouselView>
             <CarouselView.ItemsSource>
                 <x:Array Type="{x:Type View}">
