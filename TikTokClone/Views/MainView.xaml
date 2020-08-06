@@ -53,7 +53,10 @@
                         FlexLayout.Grow="1"
                         JustifyContent="Center">
                         <FlexLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TabTappedCommand, Source={x:Reference View}}" CommandParameter="{Binding .}" />
+                            <TapGestureRecognizer
+                                Command="{Binding Path=BindingContext.TabTappedCommand, Source={x:Reference View}}"
+                                CommandParameter="{Binding .}"
+                                Tapped="OnTabTapped" />
                         </FlexLayout.GestureRecognizers>
 
                         <Label Text="{Binding Name}" />
