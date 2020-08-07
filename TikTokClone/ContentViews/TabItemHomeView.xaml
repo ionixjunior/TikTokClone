@@ -15,7 +15,7 @@
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid BackgroundColor="{Binding Color}">
-                        <Label Text="Video" />
+                        <MediaElement Aspect="AspectFill" Source="{Binding Link}" />
                     </Grid>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
