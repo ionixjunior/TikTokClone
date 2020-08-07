@@ -4,7 +4,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Content>
-        <CarouselView ItemsSource="{Binding Videos}" VerticalScrollBarVisibility="Never">
+        <CarouselView
+            x:Name="CarouselViewVideos"
+            ItemsSource="{Binding Videos}"
+            VerticalScrollBarVisibility="Never">
             <CarouselView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" />
             </CarouselView.ItemsLayout>
