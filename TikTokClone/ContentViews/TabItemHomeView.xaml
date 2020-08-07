@@ -15,7 +15,10 @@
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid BackgroundColor="{Binding Color}">
-                        <MediaElement Aspect="AspectFill" Source="{Binding Link}" />
+                        <MediaElement
+                            Aspect="AspectFill"
+                            IsLooping="True"
+                            Source="{Binding Link}" />
                     </Grid>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
