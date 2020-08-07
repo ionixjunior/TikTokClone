@@ -10,13 +10,6 @@ namespace TikTokClone.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private TabItem _currentTab;
-        public TabItem CurrentTab
-        {
-            get => _currentTab;
-            set => SetProperty(ref _currentTab, value);
-        }
-
         public List<TabItem> Tabs { get; private set; }
 
         public MainViewModel()
