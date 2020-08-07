@@ -2,9 +2,16 @@
 <ContentView
     x:Class="TikTokClone.ContentViews.TabItemHomeView"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Padding="50">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Content>
-        <Label Text="{Binding .}" />
+        <CarouselView ItemsSource="{Binding Videos}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid BackgroundColor="{Binding Color}">
+                        <Label Text="Video" />
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
     </ContentView.Content>
 </ContentView>
