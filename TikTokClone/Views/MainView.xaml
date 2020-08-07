@@ -7,7 +7,6 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templates="clr-namespace:TikTokClone.Templates"
-    x:Name="View"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
