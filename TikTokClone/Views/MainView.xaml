@@ -29,7 +29,6 @@
             AbsoluteLayout.LayoutBounds="0,1,1,80"
             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
             AlignItems="Center"
-            BackgroundColor="{Binding TabBackground}"
             BindableLayout.ItemsSource="{Binding Tabs}"
             JustifyContent="SpaceBetween">
             <BindableLayout.ItemTemplate>

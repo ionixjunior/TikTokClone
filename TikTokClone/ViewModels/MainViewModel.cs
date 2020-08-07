@@ -19,7 +19,6 @@ namespace TikTokClone.ViewModels
 
         public List<TabItem> Tabs { get; private set; }
         public ICommand PositionChangedCommand { get; private set; }
-        public ICommand TabTappedCommand { get; private set; }
 
         private Xamarin.Forms.Color _tabBackground;
         public Xamarin.Forms.Color TabBackground
@@ -42,7 +41,6 @@ namespace TikTokClone.ViewModels
             TabBackground = Xamarin.Forms.Color.Transparent;
 
             PositionChangedCommand = new Command(PositionChanged);
-            TabTappedCommand = new Command<TabItem>(TabTapped);
         }
 
         private void PositionChanged()
@@ -57,11 +55,6 @@ namespace TikTokClone.ViewModels
             }
 
             TabBackground = Xamarin.Forms.Color.Yellow;
-        }
-
-        private void TabTapped(TabItem tabItem)
-        {
-            CurrentTab = tabItem;
         }
     }
 }
