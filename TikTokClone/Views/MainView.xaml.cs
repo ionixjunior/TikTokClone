@@ -41,6 +41,11 @@ namespace TikTokClone.Views
 
         private async void OnTabTapped(object sender, EventArgs args)
         {
+            await OnTabTappedAsync(sender, args);
+        }
+
+        private async Task OnTabTappedAsync(object sender, EventArgs args)
+        {
             if (args is TappedEventArgs tappedEventArgs && tappedEventArgs.Parameter is TabItem tabItem)
             {
                 if (tabItem.DataTemplateType == typeof(TabItemHomeView))
