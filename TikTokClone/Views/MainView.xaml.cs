@@ -39,14 +39,20 @@ namespace TikTokClone.Views
             BindingContext = new MainViewModel();
         }
 
-        private void OnTabTapped(object sender, EventArgs args)
+        private async void OnTabTapped(object sender, EventArgs args)
         {
             if (args is TappedEventArgs tappedEventArgs && tappedEventArgs.Parameter is TabItem tabItem)
             {
                 if (tabItem.DataTemplateType == typeof(TabItemHomeView))
                 {
+                    var carouselViewElement = _homeView.Value.FindByName<CarouselView>("CarouselViewVideos");
+                    carouselViewElement.IsScrollAnimated = false;
+
                     TabItemContentView.Content = _homeView.Value;
                     TabBar.BackgroundColor = _tabBarTransparent;
+
+                    await Task.Delay(100);
+                    carouselViewElement.IsScrollAnimated = true;
                     return;
                 }
 
