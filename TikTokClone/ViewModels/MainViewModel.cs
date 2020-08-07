@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
 using MvvmHelpers;
-using MvvmHelpers.Commands;
 using TikTokClone.ContentViews;
 using TikTokClone.Models;
 
