@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TikTokClone.ContentViews;
 using TikTokClone.Models;
-using TikTokClone.Templates;
 using TikTokClone.ViewModels;
 using Xamarin.Forms;
 

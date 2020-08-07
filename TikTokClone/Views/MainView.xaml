@@ -6,14 +6,7 @@
     xmlns:contentViews="clr-namespace:TikTokClone.ContentViews"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:templates="clr-namespace:TikTokClone.Templates"
     mc:Ignorable="d">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <templates:TabItemDataTemplateSelector x:Key="TabsTemplate" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <AbsoluteLayout>
         <ContentView
             x:Name="TabItemContentView"
