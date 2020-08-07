@@ -16,7 +16,10 @@
     </ContentPage.Resources>
 
     <AbsoluteLayout>
-        <ContentView x:Name="TabItemContentView" />
+        <ContentView
+            x:Name="TabItemContentView"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="SizeProportional" />
 
         <FlexLayout
             x:Name="TabBar"
