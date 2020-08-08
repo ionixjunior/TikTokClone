@@ -35,7 +35,19 @@
                                 <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="OnTabTapped" />
                             </FlexLayout.GestureRecognizers>
 
-                            <Label Text="{Binding Name}" TextColor="White" />
+                            <FlexLayout
+                                AlignItems="Center"
+                                Direction="Column"
+                                FlexLayout.Grow="1">
+                                <Image
+                                    Margin="5"
+                                    HeightRequest="26"
+                                    Source="{Binding Icon}" />
+                                <Label
+                                    FontSize="Small"
+                                    Text="{Binding Name}"
+                                    TextColor="White" />
+                            </FlexLayout>
                         </FlexLayout>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>

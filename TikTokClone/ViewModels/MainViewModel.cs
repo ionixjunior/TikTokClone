@@ -15,7 +15,7 @@ namespace TikTokClone.ViewModels
             {
                 new TabItem("Home", "tab_home_selected", typeof(TabItemHomeView)),
                 new TabItem("Discover", "tab_discover_init", typeof(TabItemDiscoverView)),
-                new TabItem("Add", "tab_add_init", typeof(TabItemAddView)),
+                new TabItem(string.Empty, "tab_add_init", typeof(TabItemAddView)),
                 new TabItem("Inbox", "tab_inbox_init", typeof(TabItemInboxView)),
                 new TabItem("Me", "tab_me_init", typeof(TabItemMeView))
             };
