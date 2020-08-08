@@ -38,12 +38,15 @@
                             <FlexLayout
                                 AlignItems="Center"
                                 Direction="Column"
-                                FlexLayout.Grow="1">
+                                FlexLayout.Grow="1"
+                                JustifyContent="Center">
                                 <Image
-                                    Margin="5"
-                                    HeightRequest="26"
-                                    Source="{Binding Icon}" />
+                                    Margin="0,-15,0,0"
+                                    HeightRequest="{Binding IconHeight}"
+                                    Source="{Binding Icon}"
+                                    WidthRequest="{Binding IconWidth}" />
                                 <Label
+                                    Margin="0,5,0,0"
                                     FontSize="Small"
                                     Text="{Binding Name}"
                                     TextColor="White" />
