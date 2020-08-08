@@ -22,9 +22,125 @@
                             Aspect="AspectFill"
                             AutoPlay="false"
                             Source="{Binding Link}" />
+
+                        <FlexLayout Padding="10,0,10,80">
+                            <FlexLayout.Resources>
+                                <ResourceDictionary>
+                                    <Style TargetType="Label">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </Style>
+                                </ResourceDictionary>
+                            </FlexLayout.Resources>
+
+                            <FlexLayout
+                                Direction="Column"
+                                FlexLayout.Grow="1"
+                                JustifyContent="End">
+                                <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
+                                    <Label Text="Nome da pessoa" />
+                                    <Label Text="C" />
+                                </FlexLayout>
+
+                                <Label Text="Descrição do vídeo" />
+
+                                <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
+                                    <Label Text="ícone" />
+                                    <Label Text="Nome da música" />
+                                </FlexLayout>
+                            </FlexLayout>
+
+                            <FlexLayout
+                                Padding="0,0,40,0"
+                                AlignItems="Center"
+                                Direction="Column"
+                                FlexLayout.Basis="120"
+                                JustifyContent="End">
+                                <FlexLayout
+                                    AlignItems="Center"
+                                    Direction="Column"
+                                    FlexLayout.Basis="120">
+                                    <Frame
+                                        Padding="0"
+                                        CornerRadius="35"
+                                        HasShadow="false"
+                                        HeightRequest="70"
+                                        WidthRequest="70" />
+
+                                    <Frame
+                                        Margin="0,-13,0,0"
+                                        Padding="0"
+                                        BackgroundColor="#FF2E58"
+                                        CornerRadius="13"
+                                        HasShadow="false"
+                                        HeightRequest="26"
+                                        WidthRequest="26" />
+                                </FlexLayout>
+
+                                <FlexLayout
+                                    AlignItems="Center"
+                                    Direction="Column"
+                                    FlexLayout.Basis="100">
+                                    <Frame
+                                        Padding="0"
+                                        CornerRadius="25"
+                                        HasShadow="false"
+                                        HeightRequest="50"
+                                        WidthRequest="50" />
+
+                                    <Label Text="15,4K" />
+                                </FlexLayout>
+
+                                <FlexLayout
+                                    AlignItems="Center"
+                                    Direction="Column"
+                                    FlexLayout.Basis="100">
+                                    <Frame
+                                        Padding="0"
+                                        CornerRadius="25"
+                                        HasShadow="false"
+                                        HeightRequest="50"
+                                        WidthRequest="50" />
+
+                                    <Label Text="146" />
+                                </FlexLayout>
+
+                                <FlexLayout
+                                    AlignItems="Center"
+                                    Direction="Column"
+                                    FlexLayout.Basis="120">
+                                    <Frame
+                                        Padding="0"
+                                        CornerRadius="25"
+                                        HasShadow="false"
+                                        HeightRequest="50"
+                                        WidthRequest="50">
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="W"
+                                            VerticalTextAlignment="Center" />
+                                    </Frame>
+
+                                    <Label Text="151" />
+                                </FlexLayout>
+
+                                <Frame
+                                    Margin="0,0,0,20"
+                                    Padding="0"
+                                    CornerRadius="30"
+                                    HasShadow="false"
+                                    HeightRequest="60"
+                                    WidthRequest="60">
+                                    <Label
+                                        HorizontalTextAlignment="Center"
+                                        Text="C"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+                            </FlexLayout>
+                        </FlexLayout>
                     </Grid>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
     </ContentView.Content>
 </ContentView>
+
