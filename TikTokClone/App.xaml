@@ -10,5 +10,9 @@
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="ProximaRegular" />
         </Style>
+
+        <Style x:Key="StrongLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="ProximaSemiBold" />
+        </Style>
     </Application.Resources>
 </Application>
