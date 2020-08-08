@@ -29,6 +29,13 @@
                                     <Style TargetType="Label">
                                         <Setter Property="TextColor" Value="White" />
                                     </Style>
+
+                                    <Style
+                                        x:Key="StrongLabel"
+                                        BasedOn="{StaticResource StrongLabel}"
+                                        TargetType="Label">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </Style>
                                 </ResourceDictionary>
                             </FlexLayout.Resources>
 
@@ -37,7 +44,7 @@
                                 FlexLayout.Grow="1"
                                 JustifyContent="End">
                                 <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
-                                    <Label Text="Nome da pessoa" />
+                                    <Label Style="{StaticResource StrongLabel}" Text="Nome da pessoa" />
                                     <Label Text="C" />
                                 </FlexLayout>
 
