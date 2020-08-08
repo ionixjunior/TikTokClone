@@ -58,6 +58,7 @@ namespace TikTokClone.Views
 
                     await Task.Delay(100);
                     carouselViewElement.IsScrollAnimated = true;
+                    _homeView.Value.PlayVideoInOfBounds();
                     return;
                 }
 

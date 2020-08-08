@@ -36,7 +36,7 @@ namespace TikTokClone.ContentViews
             }
         }
 
-        private void PlayVideoInOfBounds()
+        public void PlayVideoInOfBounds()
         {
             if (CarouselViewVideos.VisibleViews.LastOrDefault()?.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
             {
