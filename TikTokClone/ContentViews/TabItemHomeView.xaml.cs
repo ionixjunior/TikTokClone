@@ -13,6 +13,14 @@ namespace TikTokClone.ContentViews
             BindingContext = new TabItemHomeViewModel();
         }
 
+        private void OnCurrentItemChanged(object sender, CurrentItemChangedEventArgs args)
+        {
+            if (IsFirstVideoToAppear(args))
+                PlayVideoInOfBounds();
+        }
+
+        private bool IsFirstVideoToAppear(CurrentItemChangedEventArgs args) => args.PreviousItem is null;
+
         private void OnPositionChanged(object sender, PositionChangedEventArgs args)
         {
             StopVideoOutOfBounds();

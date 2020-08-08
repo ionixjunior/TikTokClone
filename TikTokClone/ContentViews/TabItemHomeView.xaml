@@ -6,6 +6,7 @@
     <ContentView.Content>
         <CarouselView
             x:Name="CarouselViewVideos"
+            CurrentItemChanged="OnCurrentItemChanged"
             ItemsSource="{Binding Videos}"
             PositionChanged="OnPositionChanged"
             VerticalScrollBarVisibility="Never">
