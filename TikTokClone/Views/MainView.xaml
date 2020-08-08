@@ -14,27 +14,32 @@
             AbsoluteLayout.LayoutFlags="SizeProportional" />
 
         <FlexLayout
-            x:Name="TabBar"
-            Padding="15,0"
             AbsoluteLayout.LayoutBounds="0,1,1,80"
             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
-            AlignItems="Center"
-            BindableLayout.ItemsSource="{Binding Tabs}"
-            JustifyContent="SpaceBetween">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <FlexLayout
-                        AlignItems="Center"
-                        FlexLayout.Grow="1"
-                        JustifyContent="Center">
-                        <FlexLayout.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="OnTabTapped" />
-                        </FlexLayout.GestureRecognizers>
+            Direction="Column">
+            <BoxView Background="#7E7E82" FlexLayout.Basis="1" />
 
-                        <Label Text="{Binding Name}" />
-                    </FlexLayout>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
+            <FlexLayout
+                x:Name="TabBar"
+                AlignItems="Center"
+                BindableLayout.ItemsSource="{Binding Tabs}"
+                FlexLayout.Grow="1"
+                JustifyContent="SpaceBetween">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <FlexLayout
+                            AlignItems="Center"
+                            FlexLayout.Grow="1"
+                            JustifyContent="Center">
+                            <FlexLayout.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="OnTabTapped" />
+                            </FlexLayout.GestureRecognizers>
+
+                            <Label Text="{Binding Name}" TextColor="White" />
+                        </FlexLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
         </FlexLayout>
     </AbsoluteLayout>
 </ContentPage>
