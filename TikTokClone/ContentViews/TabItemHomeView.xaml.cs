@@ -12,5 +12,9 @@ namespace TikTokClone.ContentViews
             InitializeComponent();
             BindingContext = new TabItemHomeViewModel();
         }
+
+        private void OnPositionChanged(object sender, PositionChangedEventArgs args)
+        {
+        }
     }
 }

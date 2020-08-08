@@ -7,6 +7,7 @@
         <CarouselView
             x:Name="CarouselViewVideos"
             ItemsSource="{Binding Videos}"
+            PositionChanged="OnPositionChanged"
             VerticalScrollBarVisibility="Never">
             <CarouselView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" />
