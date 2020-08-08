@@ -17,6 +17,7 @@
                 <DataTemplate>
                     <Grid BackgroundColor="{Binding Color}">
                         <MediaElement
+                            x:Name="Video"
                             Aspect="AspectFill"
                             IsLooping="True"
                             Source="{Binding Link}" />
