@@ -19,6 +19,7 @@
                         <MediaElement
                             x:Name="Video"
                             Aspect="AspectFill"
+                            AutoPlay="false"
                             IsLooping="True"
                             Source="{Binding Link}" />
                     </Grid>
