@@ -25,8 +25,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\Proxima-Nova-Regular.woff2" />
+    <None Remove="Resources\Fonts\Proxima-Nova-Semibold.woff2" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\Proxima-Nova-Regular.woff2" />
+    <EmbeddedResource Include="Resources\Fonts\Proxima-Nova-Semibold.woff2" />
   </ItemGroup>
 </Project>
