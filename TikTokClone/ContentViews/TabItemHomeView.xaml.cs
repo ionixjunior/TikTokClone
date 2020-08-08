@@ -22,6 +22,19 @@ namespace TikTokClone.ContentViews
 
                 if (CarouselViewVideos.VisibleViews.LastOrDefault()?.FindByName<MediaElement>("Video") is MediaElement videoDown)
                     videoDown.Play();
+
+                return;
+            }
+
+            if (IsScrollDown(args))
+            {
+                if (CarouselViewVideos.VisibleViews.FirstOrDefault()?.FindByName<MediaElement>("Video") is MediaElement videoUp)
+                    videoUp.Stop();
+
+                if (CarouselViewVideos.VisibleViews.LastOrDefault()?.FindByName<MediaElement>("Video") is MediaElement videoDown)
+                    videoDown.Play();
+
+                return;
             }
         }
 
