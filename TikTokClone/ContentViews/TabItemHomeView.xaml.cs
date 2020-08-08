@@ -22,13 +22,19 @@ namespace TikTokClone.ContentViews
         private void StopVideoOutOfBounds()
         {
             if (CarouselViewVideos.VisibleViews.FirstOrDefault()?.FindByName<MediaElement>("Video") is MediaElement videoOutOfBounds)
+            {
                 videoOutOfBounds.Stop();
+                videoOutOfBounds.IsLooping = false;
+            }
         }
 
         private void PlayVideoInOfBounds()
         {
             if (CarouselViewVideos.VisibleViews.LastOrDefault()?.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
+            {
                 videoInOfBounds.Play();
+                videoInOfBounds.IsLooping = true;
+            }
         }
     }
 }
