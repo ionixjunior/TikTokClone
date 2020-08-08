@@ -13,11 +13,11 @@ namespace TikTokClone.ViewModels
         {
             Tabs = new List<TabItem>
             {
-                new TabItem("Home", typeof(TabItemHomeView)),
-                new TabItem("Discover", typeof(TabItemDiscoverView)),
-                new TabItem("Add", typeof(TabItemAddView)),
-                new TabItem("Inbox", typeof(TabItemInboxView)),
-                new TabItem("Me", typeof(TabItemMeView))
+                new TabItem("Home", "tab_home_selected", typeof(TabItemHomeView)),
+                new TabItem("Discover", "tab_discover_init", typeof(TabItemDiscoverView)),
+                new TabItem("Add", "tab_add_init", typeof(TabItemAddView)),
+                new TabItem("Inbox", "tab_inbox_init", typeof(TabItemInboxView)),
+                new TabItem("Me", "tab_me_init", typeof(TabItemMeView))
             };
         }
     }
