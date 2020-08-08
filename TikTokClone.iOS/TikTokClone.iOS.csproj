@@ -137,4 +137,45 @@
   <ItemGroup>
     <Folder Include="Renderers\" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_add_init.png" />
+    <BundleResource Include="Resources\tab_add_init%402x.png" />
+    <BundleResource Include="Resources\tab_add_init%403x.png" />
+    <BundleResource Include="Resources\tab_add.png" />
+    <BundleResource Include="Resources\tab_add%402x.png" />
+    <BundleResource Include="Resources\tab_add%403x.png" />
+    <BundleResource Include="Resources\tab_discover_init.png" />
+    <BundleResource Include="Resources\tab_discover_init%402x.png" />
+    <BundleResource Include="Resources\tab_discover_init%403x.png" />
+    <BundleResource Include="Resources\tab_discover_selected.png" />
+    <BundleResource Include="Resources\tab_discover_selected%402x.png" />
+    <BundleResource Include="Resources\tab_discover_selected%403x.png" />
+    <BundleResource Include="Resources\tab_discover.png" />
+    <BundleResource Include="Resources\tab_discover%402x.png" />
+    <BundleResource Include="Resources\tab_discover%403x.png" />
+    <BundleResource Include="Resources\tab_home_selected.png" />
+    <BundleResource Include="Resources\tab_home_selected%402x.png" />
+    <BundleResource Include="Resources\tab_home_selected%403x.png" />
+    <BundleResource Include="Resources\tab_home.png" />
+    <BundleResource Include="Resources\tab_home%402x.png" />
+    <BundleResource Include="Resources\tab_home%403x.png" />
+    <BundleResource Include="Resources\tab_inbox_init.png" />
+    <BundleResource Include="Resources\tab_inbox_init%402x.png" />
+    <BundleResource Include="Resources\tab_inbox_init%403x.png" />
+    <BundleResource Include="Resources\tab_inbox_selected.png" />
+    <BundleResource Include="Resources\tab_inbox_selected%402x.png" />
+    <BundleResource Include="Resources\tab_inbox_selected%403x.png" />
+    <BundleResource Include="Resources\tab_inbox.png" />
+    <BundleResource Include="Resources\tab_inbox%402x.png" />
+    <BundleResource Include="Resources\tab_inbox%403x.png" />
+    <BundleResource Include="Resources\tab_me_init.png" />
+    <BundleResource Include="Resources\tab_me_init%402x.png" />
+    <BundleResource Include="Resources\tab_me_init%403x.png" />
+    <BundleResource Include="Resources\tab_me_selected.png" />
+    <BundleResource Include="Resources\tab_me_selected%402x.png" />
+    <BundleResource Include="Resources\tab_me_selected%403x.png" />
+    <BundleResource Include="Resources\tab_me.png" />
+    <BundleResource Include="Resources\tab_me%402x.png" />
+    <BundleResource Include="Resources\tab_me%403x.png" />
+  </ItemGroup>
 </Project>
