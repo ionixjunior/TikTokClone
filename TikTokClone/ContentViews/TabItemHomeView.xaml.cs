@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
 using System.Threading;
+using TikTokClone.Controls;
 
 namespace TikTokClone.ContentViews
 {
@@ -54,6 +55,9 @@ namespace TikTokClone.ContentViews
                         ResetCipherState(cipher2);
                         ResetCipherState(cipher3);
                     }
+
+                    if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
+                        songName.StopAnimation();
                 }
             }
         }
