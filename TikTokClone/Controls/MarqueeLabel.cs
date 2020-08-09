@@ -65,6 +65,8 @@ namespace TikTokClone.Controls
 
         private string GetFirstLetterToRemove() => Text.Substring(0, 1);
 
+        private const string SpaceCharacters = "    ";
+
         private string AddLetterToTheEnd(string letter, bool isFirstLetter)
         {
             var stringBuilder = new StringBuilder();
@@ -72,7 +74,7 @@ namespace TikTokClone.Controls
             stringBuilder.Append(Text);
 
             if (isFirstLetter)
-                stringBuilder.Append("    ");
+                stringBuilder.Append(SpaceCharacters);
 
             stringBuilder.Append(letter);
 
