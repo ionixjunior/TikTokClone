@@ -11,12 +11,11 @@
         <ContentView
             x:Name="TabItemContentView"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="SizeProportional">
-            <contentViews:TabItemHomeView />
-        </ContentView>
+            AbsoluteLayout.LayoutFlags="SizeProportional" />
 
         <FlexLayout
-            AbsoluteLayout.LayoutBounds="0,0,1,100"
+            Padding="0,14"
+            AbsoluteLayout.LayoutBounds="0,0,1,116"
             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
             AlignItems="End"
             JustifyContent="Center">
@@ -37,6 +36,19 @@
                 Text="For You"
                 TextColor="White" />
         </FlexLayout>
+
+        <FlexLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,116"
+            AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
+            AlignItems="End"
+            JustifyContent="End">
+            <Image
+                Margin="0,0,15,0"
+                HeightRequest="50"
+                Source="covid_19_shield"
+                WidthRequest="50" />
+        </FlexLayout>
+
 
         <FlexLayout
             AbsoluteLayout.LayoutBounds="0,1,1,80"
