@@ -84,13 +84,8 @@ namespace TikTokClone.ContentViews
                 }
 
                 if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                    Task.Run(async () => await StartSongNameAnimation(songName, _cancellationTokenSourceOfAnimations.Token));
+                    Task.Run(async () => await songName.StartAnimationAsync(_cancellationTokenSourceOfAnimations.Token));
             }
-        }
-
-        private async Task StartSongNameAnimation(MarqueeLabel songName, CancellationToken token)
-        {
-            await songName.StartAnimation(token);
         }
 
         private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3, CancellationToken token)

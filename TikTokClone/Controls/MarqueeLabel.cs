@@ -33,9 +33,11 @@ namespace TikTokClone.Controls
         }
 
         private int _totalLetters = 0;
+        private CancellationToken _token;
 
-        private async Task StartAnimationAsync()
+        public async Task StartAnimationAsync(CancellationToken token)
         {
+            _token = token;
             _totalLetters = Text.Length;
             await MoveLettersAsync();
         }
@@ -108,13 +110,5 @@ namespace TikTokClone.Controls
         public void RestoreOriginalText() => SetNewText(AnimatedText);
 
         public void SetNewText(string newText) => Device.BeginInvokeOnMainThread(() => Text = newText);
-
-        private CancellationToken _token;
-
-        public async Task StartAnimation(CancellationToken token)
-        {
-            _token = token;
-            await StartAnimationAsync();
-        }
     }
 }
