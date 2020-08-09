@@ -16,7 +16,7 @@
 
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Grid BackgroundColor="{Binding Color}">
+                    <Grid>
                         <MediaElement
                             x:Name="Video"
                             Aspect="AspectFill"
