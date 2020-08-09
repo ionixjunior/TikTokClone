@@ -154,7 +154,7 @@
                                 </FlexLayout>
 
                                 <Grid Margin="0,0,0,20" Padding="0">
-                                    <Grid>
+                                    <Grid x:Name="SongDisc">
                                         <Image
                                             HeightRequest="60"
                                             Source="disc"
