@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TikTokClone.ViewModels;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using System;
 
 namespace TikTokClone.ContentViews
 {
@@ -54,19 +55,25 @@ namespace TikTokClone.ContentViews
                     view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
                     view.FindByName<Image>("MusicCipher3") is Image cipher3)
                 {
-                    Task.Run(() =>
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await Task.WhenAll(
-                                MoveCipherAsync(cipher1),
-                                ScaleCipherAsync(cipher1),
-                                FadeCipherAsync(cipher1)
-                            );
-                        });
-                    });
+                    AnimateCipher(cipher1, TimeSpan.Zero);
                 }
             }
+        }
+
+        private void AnimateCipher(Image image, TimeSpan delayToAnimate)
+        {
+            Task.Run(() =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Delay(delayToAnimate);
+                    await Task.WhenAll(
+                        MoveCipherAsync(image),
+                        ScaleCipherAsync(image),
+                        FadeCipherAsync(image)
+                    );
+                });
+            });
         }
 
         private async Task MoveCipherAsync(Image image)
