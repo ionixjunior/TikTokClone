@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TikTokClone.ViewModels;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace TikTokClone.ContentViews
 {
@@ -45,6 +46,20 @@ namespace TikTokClone.ContentViews
             {
                 videoInOfBounds.Play();
                 videoInOfBounds.IsLooping = true;
+            }
+
+            if (CarouselViewVideos.VisibleViews.LastOrDefault()?.FindByName<Image>("MusicCipher1") is Image imageCipher1)
+            {
+                Task.Run(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await imageCipher1.TranslateTo(-30, -10, 500);
+                        await imageCipher1.TranslateTo(-45, -25, 500);
+                        await imageCipher1.TranslateTo(-50, -50, 500);
+                        await imageCipher1.TranslateTo(-60, -80, 500);
+                    });
+                });
             }
         }
     }
