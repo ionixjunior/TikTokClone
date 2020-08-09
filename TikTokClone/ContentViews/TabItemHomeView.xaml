@@ -154,19 +154,21 @@
                                 </FlexLayout>
 
                                 <Grid Margin="0,0,0,20" Padding="0">
-                                    <Image
-                                        HeightRequest="60"
-                                        Source="disc"
-                                        WidthRequest="60" />
+                                    <Grid>
+                                        <Image
+                                            HeightRequest="60"
+                                            Source="disc"
+                                            WidthRequest="60" />
 
-                                    <Image Source="{Binding SongAvatar}">
-                                        <Image.Clip>
-                                            <EllipseGeometry
-                                                Center="30,30"
-                                                RadiusX="17"
-                                                RadiusY="17" />
-                                        </Image.Clip>
-                                    </Image>
+                                        <Image Source="{Binding SongAvatar}">
+                                            <Image.Clip>
+                                                <EllipseGeometry
+                                                    Center="30,30"
+                                                    RadiusX="17"
+                                                    RadiusY="17" />
+                                            </Image.Clip>
+                                        </Image>
+                                    </Grid>
 
                                     <Image
                                         x:Name="MusicCipher1"
