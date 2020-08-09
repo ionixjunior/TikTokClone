@@ -26,8 +26,6 @@ namespace TikTokClone.Controls
 
         private static void OnAnimatedTextChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            System.Diagnostics.Debug.WriteLine($"Texto alterado: {newValue}");
-
             if (bindable is MarqueeLabel label)
                 label.Text = (string)newValue;
         }
@@ -57,14 +55,9 @@ namespace TikTokClone.Controls
                 _token.ThrowIfCancellationRequested();
 
                 var charsToRemove = GetFirstLetterToRemove();
-                System.Diagnostics.Debug.WriteLine($"charsToRemove: {charsToRemove}");
-
                 var isFirstLetter = letterIndex == 0;
                 var textWithRemovedLetterAtEnd = AddLetterToTheEnd(charsToRemove, isFirstLetter);
-                System.Diagnostics.Debug.WriteLine($"textWithRemovedLetterAtEnd: {textWithRemovedLetterAtEnd}");
-
                 var newText = RemoveFirstLetter(textWithRemovedLetterAtEnd);
-                System.Diagnostics.Debug.WriteLine($"newText: {newText}");
 
                 SetNewText(newText);
                 await Task.Delay(100);
