@@ -33,6 +33,10 @@ namespace TikTokClone.ContentViews
 
         private void StopVideoOutOfBounds()
         {
+            _cancellationTokenSourceOfAnimations?.Cancel();
+            _cancellationTokenSourceOfAnimations?.Dispose();
+            _cancellationTokenSourceOfAnimations = null;
+
             for (var index = 0; index < CarouselViewVideos.VisibleViews.Count - 1; index++)
             {
                 if (CarouselViewVideos.VisibleViews[index] is View view)
@@ -47,10 +51,6 @@ namespace TikTokClone.ContentViews
                         view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
                         view.FindByName<Image>("MusicCipher3") is Image cipher3)
                     {
-                        _cancellationTokenSourceOfTaskCipherAnimations?.Cancel();
-                        _cancellationTokenSourceOfTaskCipherAnimations?.Dispose();
-                        _cancellationTokenSourceOfTaskCipherAnimations = null;
-
                         ResetCipherState(cipher1);
                         ResetCipherState(cipher2);
                         ResetCipherState(cipher3);
@@ -62,10 +62,12 @@ namespace TikTokClone.ContentViews
             }
         }
 
-        private CancellationTokenSource _cancellationTokenSourceOfTaskCipherAnimations;
+        private CancellationTokenSource _cancellationTokenSourceOfAnimations;
 
         public void PlayVideoInOfBounds()
         {
+            _cancellationTokenSourceOfAnimations = new CancellationTokenSource();
+
             if (CarouselViewVideos.VisibleViews.LastOrDefault() is View view)
             {
                 if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
@@ -78,13 +80,17 @@ namespace TikTokClone.ContentViews
                     view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
                     view.FindByName<Image>("MusicCipher3") is Image cipher3)
                 {
-                    _cancellationTokenSourceOfTaskCipherAnimations = new CancellationTokenSource();
-                    Task.Run(async () => await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfTaskCipherAnimations.Token));
+                    Task.Run(async () => await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token));
                 }
 
                 if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                    songName.StartAnimation(_cancellationTokenSourceOfTaskCipherAnimations.Token);
+                    Task.Run(async () => await StartSongNameAnimation(songName, _cancellationTokenSourceOfAnimations.Token));
             }
+        }
+
+        private async Task StartSongNameAnimation(MarqueeLabel songName, CancellationToken token)
+        {
+            await songName.StartAnimation(token);
         }
 
         private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3, CancellationToken token)

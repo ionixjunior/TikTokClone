@@ -109,10 +109,10 @@ namespace TikTokClone.Controls
 
         private CancellationToken _token;
 
-        public void StartAnimation(CancellationToken token)
+        public async Task StartAnimation(CancellationToken token)
         {
             _token = token;
-            StartAnimationAsync();
+            await StartAnimationAsync();
         }
     }
 }
