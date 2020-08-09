@@ -60,6 +60,17 @@ namespace TikTokClone.Controls
                 await Task.Delay(100);
             }
 
+            for (var _ = 0; _ < SpaceCharacters.Length; _++)
+            {
+                var charsToRemove = GetFirstLetterToRemove();
+                var isFirstLetter = false;
+                var textWithRemovedLetterAtEnd = AddLetterToTheEnd(charsToRemove, isFirstLetter);
+                var newText = RemoveFirstLetter(textWithRemovedLetterAtEnd);
+
+                Text = newText;
+                await Task.Delay(100);
+            }
+
             await MoveLettersAsync();
         }
 
