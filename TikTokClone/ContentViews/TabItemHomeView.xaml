@@ -44,15 +44,16 @@
                                 FlexLayout.Grow="1"
                                 JustifyContent="End">
                                 <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
-                                    <Label Style="{StaticResource StrongLabel}" Text="Nome da pessoa" />
+                                    <Label Style="{StaticResource StrongLabel}" Text="{Binding AccountName}" />
                                     <Image
                                         Margin="5,0,0,0"
                                         HeightRequest="16"
+                                        IsVisible="{Binding IsVerifiedAccount}"
                                         Source="verified_account"
                                         WidthRequest="16" />
                                 </FlexLayout>
 
-                                <Label Text="Descrição do vídeo" />
+                                <Label Text="{Binding Description}" />
 
                                 <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
                                     <Image
@@ -61,7 +62,7 @@
                                         HeightRequest="18"
                                         Source="music"
                                         WidthRequest="18" />
-                                    <Label LineBreakMode="NoWrap" Text="Nome da música de testes testando" />
+                                    <Label LineBreakMode="NoWrap" Text="{Binding SongName}" />
                                 </FlexLayout>
                             </FlexLayout>
 
@@ -82,7 +83,16 @@
                                         CornerRadius="35"
                                         HasShadow="false"
                                         HeightRequest="70"
-                                        WidthRequest="70" />
+                                        WidthRequest="70">
+                                        <Image Source="{Binding AccountAvatar}">
+                                            <Image.Clip>
+                                                <EllipseGeometry
+                                                    Center="35,35"
+                                                    RadiusX="33"
+                                                    RadiusY="33" />
+                                            </Image.Clip>
+                                        </Image>
+                                    </Frame>
 
                                     <Image
                                         Margin="0,-13,0,0"
@@ -103,7 +113,7 @@
                                     <Label
                                         Margin="0,5,0,0"
                                         Style="{StaticResource StrongLabel}"
-                                        Text="15,4K" />
+                                        Text="{Binding Likes}" />
                                 </FlexLayout>
 
                                 <FlexLayout
@@ -118,7 +128,7 @@
                                     <Label
                                         Margin="0,5,0,0"
                                         Style="{StaticResource StrongLabel}"
-                                        Text="146" />
+                                        Text="{Binding Messages}" />
                                 </FlexLayout>
 
                                 <FlexLayout
@@ -133,22 +143,25 @@
                                     <Label
                                         Margin="0,5,0,0"
                                         Style="{StaticResource StrongLabel}"
-                                        Text="151" />
+                                        Text="{Binding Shares}" />
                                 </FlexLayout>
 
                                 <Grid Margin="0,0,0,20" Padding="0">
-
                                     <Frame
                                         Padding="0"
-                                        BackgroundColor="Red"
+                                        BackgroundColor="#2F2F2F"
                                         CornerRadius="30"
                                         HasShadow="false"
                                         HeightRequest="60"
                                         WidthRequest="60">
-                                        <Label
-                                            HorizontalTextAlignment="Center"
-                                            Text="C"
-                                            VerticalTextAlignment="Center" />
+                                        <Image Source="{Binding SongAvatar}">
+                                            <Image.Clip>
+                                                <EllipseGeometry
+                                                    Center="30,30"
+                                                    RadiusX="18"
+                                                    RadiusY="18" />
+                                            </Image.Clip>
+                                        </Image>
                                     </Frame>
 
                                     <Image
