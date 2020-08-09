@@ -56,7 +56,8 @@ namespace TikTokClone.ContentViews
                     {
                         await Task.WhenAll(
                             MoveCipherAsync(imageCipher1),
-                            ScaleCipherAsync(imageCipher1)
+                            ScaleCipherAsync(imageCipher1),
+                            FadeCipherAsync(imageCipher1)
                         );
                     });
                 });
@@ -74,6 +75,12 @@ namespace TikTokClone.ContentViews
         private async Task ScaleCipherAsync(Image image)
         {
             await image.ScaleTo(1.8, 2000);
+        }
+
+        private async Task FadeCipherAsync(Image image)
+        {
+            await image.FadeTo(1, 1000);
+            await image.FadeTo(0, 1000);
         }
     }
 }
