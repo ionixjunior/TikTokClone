@@ -204,5 +204,6 @@
     <BundleResource Include="Resources\whatsapp.png" />
     <BundleResource Include="Resources\whatsapp%402x.png" />
     <BundleResource Include="Resources\whatsapp%403x.png" />
+    <BundleResource Include="Resources\disc.png" />
   </ItemGroup>
 </Project>
