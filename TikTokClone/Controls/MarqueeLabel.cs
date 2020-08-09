@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -54,6 +55,8 @@ namespace TikTokClone.Controls
         {
             for (var letterIndex = 0; letterIndex < _totalLetters; letterIndex++)
             {
+                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+
                 var charsToRemove = GetFirstLetterToRemove();
                 System.Diagnostics.Debug.WriteLine($"charsToRemove: {charsToRemove}");
 
@@ -73,6 +76,8 @@ namespace TikTokClone.Controls
         {
             for (var _ = 0; _ < SpaceCharacters.Length; _++)
             {
+                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+
                 var charsToRemove = GetFirstLetterToRemove();
                 var isFirstLetter = false;
                 var textWithRemovedLetterAtEnd = AddLetterToTheEnd(charsToRemove, isFirstLetter);
@@ -105,8 +110,11 @@ namespace TikTokClone.Controls
 
         private void RestoreOriginalText() => Text = AnimatedText;
 
+        private CancellationTokenSource _cancellationTokenSource;
+
         public MarqueeLabel()
         {
+            _cancellationTokenSource = new CancellationTokenSource();
         }
     }
 }
