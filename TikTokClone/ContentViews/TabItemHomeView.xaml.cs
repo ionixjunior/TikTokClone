@@ -81,6 +81,9 @@ namespace TikTokClone.ContentViews
                     _cancellationTokenSourceOfTaskCipherAnimations = new CancellationTokenSource();
                     Task.Run(async () => await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfTaskCipherAnimations.Token));
                 }
+
+                if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
+                    songName.StartAnimation();
             }
         }
 

@@ -123,5 +123,11 @@ namespace TikTokClone.Controls
             _cancellationTokenSource?.Dispose();
             _cancellationTokenSource = null;
         }
+
+        public void StartAnimation()
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            StartAnimationAsync();
+        }
     }
 }
