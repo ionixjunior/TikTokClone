@@ -44,6 +44,13 @@ namespace TikTokClone.Controls
 
         private async Task MoveLettersAsync()
         {
+            await MoveTextLettersAsync();
+            await MoveSpaceCharactersAsync();
+            await MoveLettersAsync();
+        }
+
+        private async Task MoveTextLettersAsync()
+        {
             for (var letterIndex = 0; letterIndex < _totalLetters; letterIndex++)
             {
                 var charsToRemove = GetFirstLetterToRemove();
@@ -59,9 +66,6 @@ namespace TikTokClone.Controls
                 Text = newText;
                 await Task.Delay(100);
             }
-
-            await MoveSpaceCharactersAsync();
-            await MoveLettersAsync();
         }
 
         private async Task MoveSpaceCharactersAsync()
