@@ -16,43 +16,6 @@
         </ContentView>
 
         <FlexLayout
-            Padding="0,14"
-            AbsoluteLayout.LayoutBounds="0,0,1,116"
-            AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
-            AlignItems="End"
-            JustifyContent="Center">
-            <Label
-                FontSize="Header"
-                Text="Following"
-                TextColor="White" />
-
-            <BoxView
-                Margin="15,0,15,2"
-                BackgroundColor="#8796AB"
-                HeightRequest="16"
-                WidthRequest="0.8" />
-
-            <Label
-                FontSize="Header"
-                Style="{StaticResource StrongLabel}"
-                Text="For You"
-                TextColor="White" />
-        </FlexLayout>
-
-        <FlexLayout
-            AbsoluteLayout.LayoutBounds="0,0,1,116"
-            AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
-            AlignItems="End"
-            JustifyContent="End">
-            <Image
-                Margin="0,0,15,0"
-                HeightRequest="50"
-                Source="covid_19_shield"
-                WidthRequest="50" />
-        </FlexLayout>
-
-
-        <FlexLayout
             AbsoluteLayout.LayoutBounds="0,1,1,56"
             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
             Direction="Column">

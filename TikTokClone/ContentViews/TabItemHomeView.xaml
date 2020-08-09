@@ -5,223 +5,263 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:TikTokClone.Controls">
     <ContentView.Content>
-        <CarouselView
-            x:Name="CarouselViewVideos"
-            CurrentItemChanged="OnCurrentItemChanged"
-            ItemsSource="{Binding Videos}"
-            PositionChanged="OnPositionChanged"
-            VerticalScrollBarVisibility="Never">
-            <CarouselView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" />
-            </CarouselView.ItemsLayout>
+        <AbsoluteLayout>
+            <CarouselView
+                x:Name="CarouselViewVideos"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="SizeProportional"
+                CurrentItemChanged="OnCurrentItemChanged"
+                ItemsSource="{Binding Videos}"
+                PositionChanged="OnPositionChanged"
+                VerticalScrollBarVisibility="Never">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CarouselView.ItemsLayout>
 
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <MediaElement
-                            x:Name="Video"
-                            Aspect="AspectFill"
-                            AutoPlay="false"
-                            Source="{Binding Link}" />
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <MediaElement
+                                x:Name="Video"
+                                Aspect="AspectFill"
+                                AutoPlay="false"
+                                Source="{Binding Link}" />
 
-                        <FlexLayout Padding="10,0,10,56">
-                            <FlexLayout.Resources>
-                                <ResourceDictionary>
-                                    <Style TargetType="Label">
-                                        <Setter Property="TextColor" Value="White" />
-                                    </Style>
+                            <FlexLayout Padding="10,0,10,56">
+                                <FlexLayout.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="Label">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </Style>
 
-                                    <Style TargetType="controls:MarqueeLabel">
-                                        <Setter Property="TextColor" Value="White" />
-                                    </Style>
+                                        <Style TargetType="controls:MarqueeLabel">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </Style>
 
-                                    <Style
-                                        x:Key="StrongLabel"
-                                        BasedOn="{StaticResource StrongLabel}"
-                                        TargetType="Label">
-                                        <Setter Property="TextColor" Value="White" />
-                                    </Style>
-                                </ResourceDictionary>
-                            </FlexLayout.Resources>
-
-                            <FlexLayout
-                                Direction="Column"
-                                FlexLayout.Grow="1"
-                                JustifyContent="End">
-                                <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
-                                    <Label Style="{StaticResource StrongLabel}" Text="{Binding AccountName}" />
-                                    <Image
-                                        Margin="5,0,0,0"
-                                        HeightRequest="16"
-                                        IsVisible="{Binding IsVerifiedAccount}"
-                                        Source="verified_account"
-                                        WidthRequest="16" />
-                                </FlexLayout>
-
-                                <Label Text="{Binding Description}" />
-
-                                <Grid
-                                    Margin="0,10,0,15"
-                                    ColumnDefinitions="26,*"
-                                    FlexLayout.Basis="50">
-                                    <Image
-                                        Grid.Column="0"
-                                        Margin="0,0,10,0"
-                                        Source="music" />
-                                    <controls:MarqueeLabel
-                                        x:Name="AnimatedSongName"
-                                        Grid.Column="1"
-                                        AnimatedText="{Binding SongName}"
-                                        LineBreakMode="NoWrap"
-                                        VerticalTextAlignment="Center" />
-                                </Grid>
-                            </FlexLayout>
-
-                            <FlexLayout
-                                Margin="0,0,0,0"
-                                Padding="0,0,50,0"
-                                AlignItems="Center"
-                                Direction="Column"
-                                FlexLayout.Basis="120"
-                                JustifyContent="End">
-                                <FlexLayout
-                                    Padding="0,0,0,0"
-                                    AlignItems="Center"
-                                    Direction="Column"
-                                    FlexLayout.Basis="80">
-                                    <Frame
-                                        Padding="0"
-                                        CornerRadius="25"
-                                        HasShadow="false"
-                                        HeightRequest="50"
-                                        WidthRequest="50">
-                                        <Image Source="{Binding AccountAvatar}">
-                                            <Image.Clip>
-                                                <EllipseGeometry
-                                                    Center="25,25"
-                                                    RadiusX="23"
-                                                    RadiusY="23" />
-                                            </Image.Clip>
-                                        </Image>
-                                    </Frame>
-
-                                    <Image
-                                        Margin="0,-13,0,0"
-                                        HeightRequest="20"
-                                        Source="add"
-                                        WidthRequest="20" />
-                                </FlexLayout>
+                                        <Style
+                                            x:Key="StrongLabel"
+                                            BasedOn="{StaticResource StrongLabel}"
+                                            TargetType="Label">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </FlexLayout.Resources>
 
                                 <FlexLayout
-                                    AlignItems="Center"
                                     Direction="Column"
-                                    FlexLayout.Basis="80">
-                                    <Image
-                                        HeightRequest="36"
-                                        Source="like"
-                                        WidthRequest="36" />
-
-                                    <Label
-                                        Margin="0,5,0,0"
-                                        FontSize="Small"
-                                        Style="{StaticResource StrongLabel}"
-                                        Text="{Binding Likes}" />
-                                </FlexLayout>
-
-                                <FlexLayout
-                                    AlignItems="Center"
-                                    Direction="Column"
-                                    FlexLayout.Basis="80">
-                                    <Image
-                                        HeightRequest="36"
-                                        Source="message"
-                                        WidthRequest="36" />
-
-                                    <Label
-                                        Margin="0,5,0,0"
-                                        FontSize="Small"
-                                        Style="{StaticResource StrongLabel}"
-                                        Text="{Binding Messages}" />
-                                </FlexLayout>
-
-                                <FlexLayout
-                                    AlignItems="Center"
-                                    Direction="Column"
-                                    FlexLayout.Basis="85">
-                                    <Image
-                                        HeightRequest="36"
-                                        Source="whatsapp"
-                                        WidthRequest="36" />
-
-                                    <Label
-                                        Margin="0,5,0,0"
-                                        FontSize="Small"
-                                        Style="{StaticResource StrongLabel}"
-                                        Text="{Binding Shares}" />
-                                </FlexLayout>
-
-                                <Grid Margin="0,0,0,15" Padding="0">
-                                    <Grid x:Name="SongDisc" Rotation="0">
+                                    FlexLayout.Grow="1"
+                                    JustifyContent="End">
+                                    <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
+                                        <Label Style="{StaticResource StrongLabel}" Text="{Binding AccountName}" />
                                         <Image
-                                            HeightRequest="60"
-                                            Source="disc"
-                                            WidthRequest="60" />
+                                            Margin="5,0,0,0"
+                                            HeightRequest="16"
+                                            IsVisible="{Binding IsVerifiedAccount}"
+                                            Source="verified_account"
+                                            WidthRequest="16" />
+                                    </FlexLayout>
 
-                                        <Image Source="{Binding SongAvatar}">
-                                            <Image.Clip>
-                                                <EllipseGeometry
-                                                    Center="30,30"
-                                                    RadiusX="17"
-                                                    RadiusY="17" />
-                                            </Image.Clip>
-                                        </Image>
+                                    <Label Text="{Binding Description}" />
+
+                                    <Grid
+                                        Margin="0,10,0,15"
+                                        ColumnDefinitions="26,*"
+                                        FlexLayout.Basis="50">
+                                        <Image
+                                            Grid.Column="0"
+                                            Margin="0,0,10,0"
+                                            Source="music" />
+                                        <controls:MarqueeLabel
+                                            x:Name="AnimatedSongName"
+                                            Grid.Column="1"
+                                            AnimatedText="{Binding SongName}"
+                                            LineBreakMode="NoWrap"
+                                            VerticalTextAlignment="Center" />
                                     </Grid>
+                                </FlexLayout>
 
-                                    <Image
-                                        x:Name="MusicCipher1"
-                                        Margin="0,0,0,-80"
-                                        HeightRequest="16"
-                                        HorizontalOptions="Center"
-                                        Opacity="0"
-                                        Scale="1"
-                                        Source="music_cipher_1"
-                                        TranslationX="0"
-                                        TranslationY="0"
-                                        VerticalOptions="Center"
-                                        WidthRequest="16" />
+                                <FlexLayout
+                                    Margin="0,0,0,0"
+                                    Padding="0,0,50,0"
+                                    AlignItems="Center"
+                                    Direction="Column"
+                                    FlexLayout.Basis="120"
+                                    JustifyContent="End">
+                                    <FlexLayout
+                                        Padding="0,0,0,0"
+                                        AlignItems="Center"
+                                        Direction="Column"
+                                        FlexLayout.Basis="80">
+                                        <Frame
+                                            Padding="0"
+                                            CornerRadius="25"
+                                            HasShadow="false"
+                                            HeightRequest="50"
+                                            WidthRequest="50">
+                                            <Image Source="{Binding AccountAvatar}">
+                                                <Image.Clip>
+                                                    <EllipseGeometry
+                                                        Center="25,25"
+                                                        RadiusX="23"
+                                                        RadiusY="23" />
+                                                </Image.Clip>
+                                            </Image>
+                                        </Frame>
 
-                                    <Image
-                                        x:Name="MusicCipher2"
-                                        Margin="0,0,0,-80"
-                                        HeightRequest="16"
-                                        HorizontalOptions="Center"
-                                        Opacity="0"
-                                        Scale="1"
-                                        Source="music_cipher_2"
-                                        TranslationX="0"
-                                        TranslationY="0"
-                                        VerticalOptions="Center"
-                                        WidthRequest="16" />
+                                        <Image
+                                            Margin="0,-13,0,0"
+                                            HeightRequest="20"
+                                            Source="add"
+                                            WidthRequest="20" />
+                                    </FlexLayout>
 
-                                    <Image
-                                        x:Name="MusicCipher3"
-                                        Margin="0,0,0,-80"
-                                        HeightRequest="16"
-                                        HorizontalOptions="Center"
-                                        Opacity="0"
-                                        Scale="1"
-                                        Source="music_cipher_1"
-                                        TranslationX="0"
-                                        TranslationY="0"
-                                        VerticalOptions="Center"
-                                        WidthRequest="16" />
-                                </Grid>
+                                    <FlexLayout
+                                        AlignItems="Center"
+                                        Direction="Column"
+                                        FlexLayout.Basis="80">
+                                        <Image
+                                            HeightRequest="36"
+                                            Source="like"
+                                            WidthRequest="36" />
+
+                                        <Label
+                                            Margin="0,5,0,0"
+                                            FontSize="Small"
+                                            Style="{StaticResource StrongLabel}"
+                                            Text="{Binding Likes}" />
+                                    </FlexLayout>
+
+                                    <FlexLayout
+                                        AlignItems="Center"
+                                        Direction="Column"
+                                        FlexLayout.Basis="80">
+                                        <Image
+                                            HeightRequest="36"
+                                            Source="message"
+                                            WidthRequest="36" />
+
+                                        <Label
+                                            Margin="0,5,0,0"
+                                            FontSize="Small"
+                                            Style="{StaticResource StrongLabel}"
+                                            Text="{Binding Messages}" />
+                                    </FlexLayout>
+
+                                    <FlexLayout
+                                        AlignItems="Center"
+                                        Direction="Column"
+                                        FlexLayout.Basis="85">
+                                        <Image
+                                            HeightRequest="36"
+                                            Source="whatsapp"
+                                            WidthRequest="36" />
+
+                                        <Label
+                                            Margin="0,5,0,0"
+                                            FontSize="Small"
+                                            Style="{StaticResource StrongLabel}"
+                                            Text="{Binding Shares}" />
+                                    </FlexLayout>
+
+                                    <Grid Margin="0,0,0,15" Padding="0">
+                                        <Grid x:Name="SongDisc" Rotation="0">
+                                            <Image
+                                                HeightRequest="60"
+                                                Source="disc"
+                                                WidthRequest="60" />
+
+                                            <Image Source="{Binding SongAvatar}">
+                                                <Image.Clip>
+                                                    <EllipseGeometry
+                                                        Center="30,30"
+                                                        RadiusX="17"
+                                                        RadiusY="17" />
+                                                </Image.Clip>
+                                            </Image>
+                                        </Grid>
+
+                                        <Image
+                                            x:Name="MusicCipher1"
+                                            Margin="0,0,0,-80"
+                                            HeightRequest="16"
+                                            HorizontalOptions="Center"
+                                            Opacity="0"
+                                            Scale="1"
+                                            Source="music_cipher_1"
+                                            TranslationX="0"
+                                            TranslationY="0"
+                                            VerticalOptions="Center"
+                                            WidthRequest="16" />
+
+                                        <Image
+                                            x:Name="MusicCipher2"
+                                            Margin="0,0,0,-80"
+                                            HeightRequest="16"
+                                            HorizontalOptions="Center"
+                                            Opacity="0"
+                                            Scale="1"
+                                            Source="music_cipher_2"
+                                            TranslationX="0"
+                                            TranslationY="0"
+                                            VerticalOptions="Center"
+                                            WidthRequest="16" />
+
+                                        <Image
+                                            x:Name="MusicCipher3"
+                                            Margin="0,0,0,-80"
+                                            HeightRequest="16"
+                                            HorizontalOptions="Center"
+                                            Opacity="0"
+                                            Scale="1"
+                                            Source="music_cipher_1"
+                                            TranslationX="0"
+                                            TranslationY="0"
+                                            VerticalOptions="Center"
+                                            WidthRequest="16" />
+                                    </Grid>
+                                </FlexLayout>
                             </FlexLayout>
-                        </FlexLayout>
-                    </Grid>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <FlexLayout
+                Padding="0,14"
+                AbsoluteLayout.LayoutBounds="0,0,1,70"
+                AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
+                AlignItems="End"
+                JustifyContent="Center">
+                <Label
+                    FontSize="Header"
+                    Text="Following"
+                    TextColor="White" />
+
+                <BoxView
+                    Margin="15,0,15,2"
+                    BackgroundColor="#8796AB"
+                    HeightRequest="16"
+                    WidthRequest="0.8" />
+
+                <Label
+                    FontSize="Header"
+                    Style="{StaticResource StrongLabel}"
+                    Text="For You"
+                    TextColor="White" />
+            </FlexLayout>
+
+            <FlexLayout
+                AbsoluteLayout.LayoutBounds="0,0,1,70"
+                AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
+                AlignItems="End"
+                JustifyContent="End">
+                <Image
+                    Margin="0,0,20,0"
+                    HeightRequest="46"
+                    Source="covid_19_shield"
+                    WidthRequest="46" />
+            </FlexLayout>
+        </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>
 
