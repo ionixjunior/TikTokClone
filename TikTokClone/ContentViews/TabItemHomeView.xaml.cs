@@ -31,7 +31,7 @@ namespace TikTokClone.ContentViews
             PlayVideoInOfBounds();
         }
 
-        private void StopVideoOutOfBounds()
+        public void StopVideoOutOfBounds()
         {
             _cancellationTokenSourceOfAnimations?.Cancel();
             _cancellationTokenSourceOfAnimations?.Dispose();

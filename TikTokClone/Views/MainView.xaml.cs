@@ -66,6 +66,7 @@ namespace TikTokClone.Views
                 {
                     TabItemContentView.Content = _discoverView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
+                    _homeView.Value.StopVideoOutOfBounds();
                     return;
                 }
 
@@ -73,6 +74,7 @@ namespace TikTokClone.Views
                 {
                     TabItemContentView.Content = _addView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
+                    _homeView.Value.StopVideoOutOfBounds();
                     return;
                 }
 
@@ -80,6 +82,7 @@ namespace TikTokClone.Views
                 {
                     TabItemContentView.Content = _inboxView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
+                    _homeView.Value.StopVideoOutOfBounds();
                     return;
                 }
 
@@ -87,6 +90,7 @@ namespace TikTokClone.Views
                 {
                     TabItemContentView.Content = _meView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
+                    _homeView.Value.StopVideoOutOfBounds();
                     return;
                 }
             }
