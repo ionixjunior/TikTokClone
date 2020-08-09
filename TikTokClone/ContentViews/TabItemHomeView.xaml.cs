@@ -54,13 +54,18 @@ namespace TikTokClone.ContentViews
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await imageCipher1.TranslateTo(-30, -10, 500);
-                        await imageCipher1.TranslateTo(-45, -25, 500);
-                        await imageCipher1.TranslateTo(-50, -50, 500);
-                        await imageCipher1.TranslateTo(-60, -80, 500);
+                        await MoveCipherAsync(imageCipher1);
                     });
                 });
             }
+        }
+
+        private async Task MoveCipherAsync(Image image)
+        {
+            await image.TranslateTo(-30, -10, 500);
+            await image.TranslateTo(-45, -25, 500);
+            await image.TranslateTo(-50, -50, 500);
+            await image.TranslateTo(-60, -80, 500);
         }
     }
 }
