@@ -33,10 +33,13 @@ namespace TikTokClone.ContentViews
         {
             for (var index = 0; index < CarouselViewVideos.VisibleViews.Count - 1; index++)
             {
-                if (CarouselViewVideos.VisibleViews[index]?.FindByName<MediaElement>("Video") is MediaElement videoOutOfBounds)
+                if (CarouselViewVideos.VisibleViews[index] is View view)
                 {
-                    videoOutOfBounds.Stop();
-                    videoOutOfBounds.IsLooping = false;
+                    if (view.FindByName<MediaElement>("Video") is MediaElement videoOutOfBounds)
+                    {
+                        videoOutOfBounds.Stop();
+                        videoOutOfBounds.IsLooping = false;
+                    }
                 }
             }
         }
