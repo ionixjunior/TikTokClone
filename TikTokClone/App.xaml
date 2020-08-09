@@ -3,11 +3,16 @@
     x:Class="TikTokClone.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:TikTokClone.Controls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Application.Resources>
         <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="ProximaRegular" />
+        </Style>
+
+        <Style TargetType="controls:MarqueeLabel">
             <Setter Property="FontFamily" Value="ProximaRegular" />
         </Style>
 
