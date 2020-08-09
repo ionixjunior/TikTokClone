@@ -42,25 +42,28 @@ namespace TikTokClone.ContentViews
 
         public void PlayVideoInOfBounds()
         {
-            if (CarouselViewVideos.VisibleViews.LastOrDefault()?.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
+            if (CarouselViewVideos.VisibleViews.LastOrDefault() is View view)
             {
-                videoInOfBounds.Play();
-                videoInOfBounds.IsLooping = true;
-            }
-
-            if (CarouselViewVideos.VisibleViews.LastOrDefault()?.FindByName<Image>("MusicCipher1") is Image imageCipher1)
-            {
-                Task.Run(() =>
+                if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    videoInOfBounds.Play();
+                    videoInOfBounds.IsLooping = true;
+                }
+
+                if (view.FindByName<Image>("MusicCipher1") is Image imageCipher1)
+                {
+                    Task.Run(() =>
                     {
-                        await Task.WhenAll(
-                            MoveCipherAsync(imageCipher1),
-                            ScaleCipherAsync(imageCipher1),
-                            FadeCipherAsync(imageCipher1)
-                        );
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await Task.WhenAll(
+                                MoveCipherAsync(imageCipher1),
+                                ScaleCipherAsync(imageCipher1),
+                                FadeCipherAsync(imageCipher1)
+                            );
+                        });
                     });
-                });
+                }
             }
         }
 
