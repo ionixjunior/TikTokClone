@@ -164,7 +164,10 @@ namespace TikTokClone.ContentViews
                 await view.RotateTo(positionToMoveInEachCycle * cycle, animationTimeInEachCycle);
             }
 
+            ResetSongDiscRotatePosition(view);
             await StartSongDiscRotationAsync(view, token);
         }
+
+        private void ResetSongDiscRotatePosition(View view) => view.Rotation = 0;
     }
 }
