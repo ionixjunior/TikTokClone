@@ -52,7 +52,7 @@ namespace TikTokClone.Controls
         {
             for (var letterIndex = 0; letterIndex < _totalLetters; letterIndex++)
             {
-                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+                _token.ThrowIfCancellationRequested();
 
                 var charsToRemove = GetFirstLetterToRemove();
                 System.Diagnostics.Debug.WriteLine($"charsToRemove: {charsToRemove}");
@@ -73,7 +73,7 @@ namespace TikTokClone.Controls
         {
             for (var _ = 0; _ < SpaceCharacters.Length; _++)
             {
-                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+                _token.ThrowIfCancellationRequested();
 
                 var charsToRemove = GetFirstLetterToRemove();
                 var isFirstLetter = false;
@@ -105,26 +105,13 @@ namespace TikTokClone.Controls
 
         private string RemoveFirstLetter(string text) => text.Substring(1);
 
-        private void RestoreOriginalText() => Text = AnimatedText;
+        public void RestoreOriginalText() => Text = AnimatedText;
 
-        private CancellationTokenSource _cancellationTokenSource;
+        private CancellationToken _token;
 
-        public MarqueeLabel()
+        public void StartAnimation(CancellationToken token)
         {
-            _cancellationTokenSource = new CancellationTokenSource();
-        }
-
-        public void StopAnimation()
-        {
-            _cancellationTokenSource?.Cancel();
-            _cancellationTokenSource?.Dispose();
-            _cancellationTokenSource = null;
-            RestoreOriginalText();
-        }
-
-        public void StartAnimation()
-        {
-            _cancellationTokenSource = new CancellationTokenSource();
+            _token = token;
             StartAnimationAsync();
         }
     }

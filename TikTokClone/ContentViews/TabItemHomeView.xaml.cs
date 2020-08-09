@@ -57,7 +57,7 @@ namespace TikTokClone.ContentViews
                     }
 
                     if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                        songName.StopAnimation();
+                        songName.RestoreOriginalText();
                 }
             }
         }
@@ -83,7 +83,7 @@ namespace TikTokClone.ContentViews
                 }
 
                 if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                    songName.StartAnimation();
+                    songName.StartAnimation(_cancellationTokenSourceOfTaskCipherAnimations.Token);
             }
         }
 
