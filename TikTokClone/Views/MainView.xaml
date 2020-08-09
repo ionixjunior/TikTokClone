@@ -11,7 +11,32 @@
         <ContentView
             x:Name="TabItemContentView"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="SizeProportional" />
+            AbsoluteLayout.LayoutFlags="SizeProportional">
+            <contentViews:TabItemHomeView />
+        </ContentView>
+
+        <FlexLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,100"
+            AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
+            AlignItems="End"
+            JustifyContent="Center">
+            <Label
+                FontSize="Header"
+                Text="Following"
+                TextColor="White" />
+
+            <BoxView
+                Margin="15,0,15,2"
+                BackgroundColor="#8796AB"
+                HeightRequest="16"
+                WidthRequest="0.8" />
+
+            <Label
+                FontSize="Header"
+                Style="{StaticResource StrongLabel}"
+                Text="For You"
+                TextColor="White" />
+        </FlexLayout>
 
         <FlexLayout
             AbsoluteLayout.LayoutBounds="0,1,1,80"
