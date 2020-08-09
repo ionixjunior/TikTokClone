@@ -8,6 +8,8 @@ using TikTokClone.ContentViews;
 using TikTokClone.Models;
 using TikTokClone.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace TikTokClone.Views
 {
@@ -37,7 +39,12 @@ namespace TikTokClone.Views
             TabItemContentView.Content = _homeView.Value;
             TabBar.BackgroundColor = _tabBarTransparent;
             BindingContext = new MainViewModel();
+
+            HideStatusBar();
         }
+
+        private void HideStatusBar() => On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.True);
+        private void ShowStatusBar() => On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.False);
 
         private async void OnTabTapped(object sender, EventArgs args)
         {
@@ -59,6 +66,7 @@ namespace TikTokClone.Views
                     await Task.Delay(100);
                     carouselViewElement.IsScrollAnimated = true;
                     _homeView.Value.PlayVideoInOfBounds();
+                    HideStatusBar();
                     return;
                 }
 
@@ -67,6 +75,7 @@ namespace TikTokClone.Views
                     TabItemContentView.Content = _discoverView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
                     _homeView.Value.StopVideoOutOfBounds();
+                    ShowStatusBar();
                     return;
                 }
 
@@ -75,6 +84,7 @@ namespace TikTokClone.Views
                     TabItemContentView.Content = _addView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
                     _homeView.Value.StopVideoOutOfBounds();
+                    ShowStatusBar();
                     return;
                 }
 
@@ -83,6 +93,7 @@ namespace TikTokClone.Views
                     TabItemContentView.Content = _inboxView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
                     _homeView.Value.StopVideoOutOfBounds();
+                    ShowStatusBar();
                     return;
                 }
 
@@ -91,6 +102,7 @@ namespace TikTokClone.Views
                     TabItemContentView.Content = _meView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
                     _homeView.Value.StopVideoOutOfBounds();
+                    ShowStatusBar();
                     return;
                 }
             }
