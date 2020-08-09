@@ -60,17 +60,21 @@
 
                                 <Label Text="{Binding Description}" />
 
-                                <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
+                                <Grid
+                                    Margin="0,10,0,15"
+                                    ColumnDefinitions="26,*"
+                                    FlexLayout.Basis="50">
                                     <Image
+                                        Grid.Column="0"
                                         Margin="0,0,10,0"
-                                        HeightRequest="18"
-                                        Source="music"
-                                        WidthRequest="18" />
+                                        Source="music" />
                                     <controls:MarqueeLabel
                                         x:Name="AnimatedSongName"
+                                        Grid.Column="1"
                                         AnimatedText="{Binding SongName}"
-                                        LineBreakMode="NoWrap" />
-                                </FlexLayout>
+                                        LineBreakMode="NoWrap"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
                             </FlexLayout>
 
                             <FlexLayout
