@@ -24,7 +24,7 @@
                             AutoPlay="false"
                             Source="{Binding Link}" />
 
-                        <FlexLayout Padding="10,0,10,80">
+                        <FlexLayout Padding="10,0,10,56">
                             <FlexLayout.Resources>
                                 <ResourceDictionary>
                                     <Style TargetType="Label">
@@ -84,41 +84,42 @@
                                     Padding="0,0,0,0"
                                     AlignItems="Center"
                                     Direction="Column"
-                                    FlexLayout.Basis="120">
+                                    FlexLayout.Basis="80">
                                     <Frame
                                         Padding="0"
-                                        CornerRadius="35"
+                                        CornerRadius="25"
                                         HasShadow="false"
-                                        HeightRequest="70"
-                                        WidthRequest="70">
+                                        HeightRequest="50"
+                                        WidthRequest="50">
                                         <Image Source="{Binding AccountAvatar}">
                                             <Image.Clip>
                                                 <EllipseGeometry
-                                                    Center="35,35"
-                                                    RadiusX="33"
-                                                    RadiusY="33" />
+                                                    Center="25,25"
+                                                    RadiusX="23"
+                                                    RadiusY="23" />
                                             </Image.Clip>
                                         </Image>
                                     </Frame>
 
                                     <Image
                                         Margin="0,-13,0,0"
-                                        HeightRequest="26"
+                                        HeightRequest="20"
                                         Source="add"
-                                        WidthRequest="26" />
+                                        WidthRequest="20" />
                                 </FlexLayout>
 
                                 <FlexLayout
                                     AlignItems="Center"
                                     Direction="Column"
-                                    FlexLayout.Basis="100">
+                                    FlexLayout.Basis="80">
                                     <Image
-                                        HeightRequest="50"
+                                        HeightRequest="36"
                                         Source="like"
-                                        WidthRequest="50" />
+                                        WidthRequest="36" />
 
                                     <Label
                                         Margin="0,5,0,0"
+                                        FontSize="Small"
                                         Style="{StaticResource StrongLabel}"
                                         Text="{Binding Likes}" />
                                 </FlexLayout>
@@ -126,14 +127,15 @@
                                 <FlexLayout
                                     AlignItems="Center"
                                     Direction="Column"
-                                    FlexLayout.Basis="100">
+                                    FlexLayout.Basis="80">
                                     <Image
-                                        HeightRequest="50"
+                                        HeightRequest="36"
                                         Source="message"
-                                        WidthRequest="50" />
+                                        WidthRequest="36" />
 
                                     <Label
                                         Margin="0,5,0,0"
+                                        FontSize="Small"
                                         Style="{StaticResource StrongLabel}"
                                         Text="{Binding Messages}" />
                                 </FlexLayout>
@@ -141,19 +143,20 @@
                                 <FlexLayout
                                     AlignItems="Center"
                                     Direction="Column"
-                                    FlexLayout.Basis="120">
+                                    FlexLayout.Basis="85">
                                     <Image
-                                        HeightRequest="50"
+                                        HeightRequest="36"
                                         Source="whatsapp"
-                                        WidthRequest="50" />
+                                        WidthRequest="36" />
 
                                     <Label
                                         Margin="0,5,0,0"
+                                        FontSize="Small"
                                         Style="{StaticResource StrongLabel}"
                                         Text="{Binding Shares}" />
                                 </FlexLayout>
 
-                                <Grid Margin="0,0,0,20" Padding="0">
+                                <Grid Margin="0,0,0,15" Padding="0">
                                     <Grid x:Name="SongDisc" Rotation="0">
                                         <Image
                                             HeightRequest="60"
