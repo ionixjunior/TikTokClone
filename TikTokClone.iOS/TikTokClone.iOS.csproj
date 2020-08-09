@@ -177,5 +177,32 @@
     <BundleResource Include="Resources\tab_me.png" />
     <BundleResource Include="Resources\tab_me%402x.png" />
     <BundleResource Include="Resources\tab_me%403x.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\add%402x.png" />
+    <BundleResource Include="Resources\add%403x.png" />
+    <BundleResource Include="Resources\covid_19_shield.png" />
+    <BundleResource Include="Resources\covid_19_shield%402x.png" />
+    <BundleResource Include="Resources\covid_19_shield%403x.png" />
+    <BundleResource Include="Resources\like.png" />
+    <BundleResource Include="Resources\like%402x.png" />
+    <BundleResource Include="Resources\like%403x.png" />
+    <BundleResource Include="Resources\message.png" />
+    <BundleResource Include="Resources\message%402x.png" />
+    <BundleResource Include="Resources\message%403x.png" />
+    <BundleResource Include="Resources\music_cipher_1.png" />
+    <BundleResource Include="Resources\music_cipher_1%402x.png" />
+    <BundleResource Include="Resources\music_cipher_1%403x.png" />
+    <BundleResource Include="Resources\music_cipher_2.png" />
+    <BundleResource Include="Resources\music_cipher_2%402x.png" />
+    <BundleResource Include="Resources\music_cipher_2%403x.png" />
+    <BundleResource Include="Resources\music.png" />
+    <BundleResource Include="Resources\music%402x.png" />
+    <BundleResource Include="Resources\music%403x.png" />
+    <BundleResource Include="Resources\verified_account.png" />
+    <BundleResource Include="Resources\verified_account%402x.png" />
+    <BundleResource Include="Resources\verified_account%403x.png" />
+    <BundleResource Include="Resources\whatsapp.png" />
+    <BundleResource Include="Resources\whatsapp%402x.png" />
+    <BundleResource Include="Resources\whatsapp%403x.png" />
   </ItemGroup>
 </Project>
