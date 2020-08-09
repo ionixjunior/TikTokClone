@@ -56,6 +56,8 @@ namespace TikTokClone.ContentViews
                     view.FindByName<Image>("MusicCipher3") is Image cipher3)
                 {
                     AnimateCipher(cipher1, TimeSpan.Zero);
+                    AnimateCipher(cipher2, TimeSpan.FromMilliseconds(900));
+                    AnimateCipher(cipher3, TimeSpan.FromMilliseconds(1800));
                 }
             }
         }
