@@ -11,9 +11,7 @@
         <ContentView
             x:Name="TabItemContentView"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="SizeProportional">
-            <contentViews:TabItemHomeView />
-        </ContentView>
+            AbsoluteLayout.LayoutFlags="SizeProportional" />
 
         <FlexLayout
             AbsoluteLayout.LayoutBounds="0,1,1,56"
