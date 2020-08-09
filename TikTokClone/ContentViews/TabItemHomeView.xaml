@@ -156,7 +156,37 @@
                                         Margin="0,0,0,-80"
                                         HeightRequest="16"
                                         HorizontalOptions="Center"
+                                        Opacity="0"
+                                        Scale="1"
                                         Source="music_cipher_1"
+                                        TranslationX="0"
+                                        TranslationY="0"
+                                        VerticalOptions="Center"
+                                        WidthRequest="16" />
+
+                                    <Image
+                                        x:Name="MusicCipher2"
+                                        Margin="0,0,0,-80"
+                                        HeightRequest="16"
+                                        HorizontalOptions="Center"
+                                        Opacity="0"
+                                        Scale="1"
+                                        Source="music_cipher_2"
+                                        TranslationX="0"
+                                        TranslationY="0"
+                                        VerticalOptions="Center"
+                                        WidthRequest="16" />
+
+                                    <Image
+                                        x:Name="MusicCipher3"
+                                        Margin="0,0,0,-80"
+                                        HeightRequest="16"
+                                        HorizontalOptions="Center"
+                                        Opacity="0"
+                                        Scale="1"
+                                        Source="music_cipher_1"
+                                        TranslationX="0"
+                                        TranslationY="0"
                                         VerticalOptions="Center"
                                         WidthRequest="16" />
                                 </Grid>
