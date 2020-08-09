@@ -57,10 +57,11 @@
                                 <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
                                     <Image
                                         Margin="0,0,10,0"
+                                        FlexLayout.Basis="60"
                                         HeightRequest="18"
                                         Source="music"
                                         WidthRequest="18" />
-                                    <Label Text="Nome da música" />
+                                    <Label LineBreakMode="NoWrap" Text="Nome da música de testes testando" />
                                 </FlexLayout>
                             </FlexLayout>
 
