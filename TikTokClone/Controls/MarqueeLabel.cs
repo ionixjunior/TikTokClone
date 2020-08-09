@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace TikTokClone.Controls
@@ -26,8 +28,58 @@ namespace TikTokClone.Controls
             System.Diagnostics.Debug.WriteLine($"Texto alterado: {newValue}");
 
             if (bindable is MarqueeLabel label)
+            {
                 label.Text = (string)newValue;
+                label.StartAnimationAsync();
+            }
         }
+
+        private int _totalLetters = 0;
+
+        private async Task StartAnimationAsync()
+        {
+            _totalLetters = Text.Length;
+            await MoveLettersAsync();
+        }
+
+        private async Task MoveLettersAsync()
+        {
+            for (var letterIndex = 0; letterIndex < _totalLetters; letterIndex++)
+            {
+                var charsToRemove = GetFirstLetterToRemove();
+                System.Diagnostics.Debug.WriteLine($"charsToRemove: {charsToRemove}");
+
+                var isFirstLetter = letterIndex == 0;
+                var textWithRemovedLetterAtEnd = AddLetterToTheEnd(charsToRemove, isFirstLetter);
+                System.Diagnostics.Debug.WriteLine($"textWithRemovedLetterAtEnd: {textWithRemovedLetterAtEnd}");
+
+                var newText = RemoveFirstLetter(textWithRemovedLetterAtEnd);
+                System.Diagnostics.Debug.WriteLine($"newText: {newText}");
+
+                Text = newText;
+                await Task.Delay(100);
+            }
+
+            await MoveLettersAsync();
+        }
+
+        private string GetFirstLetterToRemove() => Text.Substring(0, 1);
+
+        private string AddLetterToTheEnd(string letter, bool isFirstLetter)
+        {
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(Text);
+
+            if (isFirstLetter)
+                stringBuilder.Append("    ");
+
+            stringBuilder.Append(letter);
+
+            return stringBuilder.ToString();
+        }
+
+        private string RemoveFirstLetter(string text) => text.Substring(1);
 
         public MarqueeLabel()
         {
