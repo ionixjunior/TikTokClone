@@ -58,6 +58,9 @@ namespace TikTokClone.ContentViews
 
                     if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
                         songName.RestoreOriginalText();
+
+                    if (view.FindByName<Grid>("SongDisc") is Grid grid)
+                        ResetSongDiscRotatePosition(grid);
                 }
             }
         }
