@@ -55,27 +55,42 @@ namespace TikTokClone.ContentViews
                     view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
                     view.FindByName<Image>("MusicCipher3") is Image cipher3)
                 {
-                    AnimateCipher(cipher1, TimeSpan.Zero);
-                    AnimateCipher(cipher2, TimeSpan.FromMilliseconds(900));
-                    AnimateCipher(cipher3, TimeSpan.FromMilliseconds(1800));
+                    Task.Run(async () => await StartCipherAnimations(cipher1, cipher2, cipher3));
                 }
             }
         }
 
-        private void AnimateCipher(Image image, TimeSpan delayToAnimate)
+        private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3)
         {
-            Task.Run(() =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Delay(delayToAnimate);
-                    await Task.WhenAll(
-                        MoveCipherAsync(image),
-                        ScaleCipherAsync(image),
-                        FadeCipherAsync(image)
-                    );
-                });
-            });
+            await Task.WhenAny(
+                AnimateCipher(cipher1, TimeSpan.Zero),
+                AnimateCipher(cipher2, TimeSpan.FromMilliseconds(900)),
+                AnimateCipher(cipher3, TimeSpan.FromMilliseconds(1800))
+            );
+
+            await Task.Delay(700);
+            await StartCipherAnimations(cipher1, cipher2, cipher3);
+        }
+
+        private async Task AnimateCipher(Image image, TimeSpan delayToAnimate)
+        {
+            await Task.Delay(delayToAnimate);
+
+            ResetCipherState(image);
+
+            await Task.WhenAll(
+                MoveCipherAsync(image),
+                ScaleCipherAsync(image),
+                FadeCipherAsync(image)
+            );
+        }
+
+        private void ResetCipherState(Image image)
+        {
+            image.TranslationX = 0;
+            image.TranslationY = 0;
+            image.Scale = 1;
+            image.Opacity = 0;
         }
 
         private async Task MoveCipherAsync(Image image)
