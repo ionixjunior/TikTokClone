@@ -46,6 +46,7 @@ namespace TikTokClone.Controls
         {
             await MoveTextLettersAsync();
             await MoveSpaceCharactersAsync();
+            RestoreOriginalText();
             await MoveLettersAsync();
         }
 
@@ -101,6 +102,8 @@ namespace TikTokClone.Controls
         }
 
         private string RemoveFirstLetter(string text) => text.Substring(1);
+
+        private void RestoreOriginalText() => Text = AnimatedText;
 
         public MarqueeLabel()
         {
