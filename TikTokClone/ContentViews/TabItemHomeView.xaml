@@ -85,7 +85,7 @@
                                     Padding="0,0,50,0"
                                     AlignItems="Center"
                                     Direction="Column"
-                                    FlexLayout.Basis="120"
+                                    FlexLayout.Basis="100"
                                     JustifyContent="End">
                                     <FlexLayout
                                         Padding="0,0,0,0"
@@ -166,16 +166,16 @@
                                     <Grid Margin="0,0,0,15" Padding="0">
                                         <Grid x:Name="SongDisc" Rotation="0">
                                             <Image
-                                                HeightRequest="60"
+                                                HeightRequest="50"
                                                 Source="disc"
-                                                WidthRequest="60" />
+                                                WidthRequest="50" />
 
                                             <Image Source="{Binding SongAvatar}">
                                                 <Image.Clip>
                                                     <EllipseGeometry
-                                                        Center="30,30"
-                                                        RadiusX="17"
-                                                        RadiusY="17" />
+                                                        Center="25,25"
+                                                        RadiusX="14"
+                                                        RadiusY="14" />
                                                 </Image.Clip>
                                             </Image>
                                         </Grid>
