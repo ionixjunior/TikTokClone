@@ -128,7 +128,7 @@ namespace TikTokClone.ContentViews
         {
             image.TranslationX = 0;
             image.TranslationY = 0;
-            image.Scale = 1;
+            image.Scale = 0.3;
             image.Opacity = 0;
         }
 
