@@ -29,10 +29,7 @@ namespace TikTokClone.Controls
             System.Diagnostics.Debug.WriteLine($"Texto alterado: {newValue}");
 
             if (bindable is MarqueeLabel label)
-            {
                 label.Text = (string)newValue;
-                label.StartAnimationAsync();
-            }
         }
 
         private int _totalLetters = 0;
