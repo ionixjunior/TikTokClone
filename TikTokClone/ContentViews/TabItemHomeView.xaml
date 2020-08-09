@@ -186,10 +186,7 @@
                                             HeightRequest="16"
                                             HorizontalOptions="Center"
                                             Opacity="0"
-                                            Scale="1"
                                             Source="music_cipher_1"
-                                            TranslationX="0"
-                                            TranslationY="0"
                                             VerticalOptions="Center"
                                             WidthRequest="16" />
 
@@ -199,10 +196,7 @@
                                             HeightRequest="16"
                                             HorizontalOptions="Center"
                                             Opacity="0"
-                                            Scale="1"
                                             Source="music_cipher_2"
-                                            TranslationX="0"
-                                            TranslationY="0"
                                             VerticalOptions="Center"
                                             WidthRequest="16" />
 
@@ -212,10 +206,7 @@
                                             HeightRequest="16"
                                             HorizontalOptions="Center"
                                             Opacity="0"
-                                            Scale="1"
                                             Source="music_cipher_1"
-                                            TranslationX="0"
-                                            TranslationY="0"
                                             VerticalOptions="Center"
                                             WidthRequest="16" />
                                     </Grid>
