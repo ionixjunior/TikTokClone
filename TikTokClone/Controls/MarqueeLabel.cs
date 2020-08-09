@@ -64,7 +64,7 @@ namespace TikTokClone.Controls
                 var newText = RemoveFirstLetter(textWithRemovedLetterAtEnd);
                 System.Diagnostics.Debug.WriteLine($"newText: {newText}");
 
-                Text = newText;
+                SetNewText(newText);
                 await Task.Delay(100);
             }
         }
@@ -80,7 +80,7 @@ namespace TikTokClone.Controls
                 var textWithRemovedLetterAtEnd = AddLetterToTheEnd(charsToRemove, isFirstLetter);
                 var newText = RemoveFirstLetter(textWithRemovedLetterAtEnd);
 
-                Text = newText;
+                SetNewText(newText);
                 await Task.Delay(100);
             }
         }
@@ -105,7 +105,9 @@ namespace TikTokClone.Controls
 
         private string RemoveFirstLetter(string text) => text.Substring(1);
 
-        public void RestoreOriginalText() => Text = AnimatedText;
+        public void RestoreOriginalText() => SetNewText(AnimatedText);
+
+        public void SetNewText(string newText) => Device.BeginInvokeOnMainThread(() => Text = newText);
 
         private CancellationToken _token;
 
