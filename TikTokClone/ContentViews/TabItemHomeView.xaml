@@ -109,14 +109,15 @@
                                     AlignItems="Center"
                                     Direction="Column"
                                     FlexLayout.Basis="100">
-                                    <Frame
-                                        Padding="0"
-                                        CornerRadius="25"
-                                        HasShadow="false"
+                                    <Image
                                         HeightRequest="50"
+                                        Source="message"
                                         WidthRequest="50" />
 
-                                    <Label Text="146" />
+                                    <Label
+                                        Margin="0,5,0,0"
+                                        Style="{StaticResource StrongLabel}"
+                                        Text="146" />
                                 </FlexLayout>
 
                                 <FlexLayout
