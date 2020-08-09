@@ -123,19 +123,15 @@
                                     AlignItems="Center"
                                     Direction="Column"
                                     FlexLayout.Basis="120">
-                                    <Frame
-                                        Padding="0"
-                                        CornerRadius="25"
-                                        HasShadow="false"
+                                    <Image
                                         HeightRequest="50"
-                                        WidthRequest="50">
-                                        <Label
-                                            HorizontalTextAlignment="Center"
-                                            Text="W"
-                                            VerticalTextAlignment="Center" />
-                                    </Frame>
+                                        Source="whatsapp"
+                                        WidthRequest="50" />
 
-                                    <Label Text="151" />
+                                    <Label
+                                        Margin="0,5,0,0"
+                                        Style="{StaticResource StrongLabel}"
+                                        Text="151" />
                                 </FlexLayout>
 
                                 <Frame
