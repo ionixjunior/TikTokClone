@@ -60,6 +60,12 @@ namespace TikTokClone.Controls
                 await Task.Delay(100);
             }
 
+            await MoveSpaceCharactersAsync();
+            await MoveLettersAsync();
+        }
+
+        private async Task MoveSpaceCharactersAsync()
+        {
             for (var _ = 0; _ < SpaceCharacters.Length; _++)
             {
                 var charsToRemove = GetFirstLetterToRemove();
@@ -70,8 +76,6 @@ namespace TikTokClone.Controls
                 Text = newText;
                 await Task.Delay(100);
             }
-
-            await MoveLettersAsync();
         }
 
         private string GetFirstLetterToRemove() => Text.Substring(0, 1);
