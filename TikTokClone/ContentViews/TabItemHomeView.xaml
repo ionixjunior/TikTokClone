@@ -66,12 +66,14 @@
                             </FlexLayout>
 
                             <FlexLayout
-                                Padding="0,0,40,0"
+                                Margin="0,0,0,0"
+                                Padding="0,0,50,0"
                                 AlignItems="Center"
                                 Direction="Column"
                                 FlexLayout.Basis="120"
                                 JustifyContent="End">
                                 <FlexLayout
+                                    Padding="0,0,0,0"
                                     AlignItems="Center"
                                     Direction="Column"
                                     FlexLayout.Basis="120">
@@ -134,18 +136,30 @@
                                         Text="151" />
                                 </FlexLayout>
 
-                                <Frame
-                                    Margin="0,0,0,20"
-                                    Padding="0"
-                                    CornerRadius="30"
-                                    HasShadow="false"
-                                    HeightRequest="60"
-                                    WidthRequest="60">
-                                    <Label
-                                        HorizontalTextAlignment="Center"
-                                        Text="C"
-                                        VerticalTextAlignment="Center" />
-                                </Frame>
+                                <Grid Margin="0,0,0,20" Padding="0">
+
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="Red"
+                                        CornerRadius="30"
+                                        HasShadow="false"
+                                        HeightRequest="60"
+                                        WidthRequest="60">
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="C"
+                                            VerticalTextAlignment="Center" />
+                                    </Frame>
+
+                                    <Image
+                                        x:Name="MusicCipher1"
+                                        Margin="0,0,0,-80"
+                                        HeightRequest="16"
+                                        HorizontalOptions="Center"
+                                        Source="music_cipher_1"
+                                        VerticalOptions="Center"
+                                        WidthRequest="16" />
+                                </Grid>
                             </FlexLayout>
                         </FlexLayout>
                     </Grid>
