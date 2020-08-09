@@ -55,7 +55,11 @@
                                 <Label Text="Descrição do vídeo" />
 
                                 <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
-                                    <Label Text="ícone" />
+                                    <Image
+                                        Margin="0,0,10,0"
+                                        HeightRequest="18"
+                                        Source="music"
+                                        WidthRequest="18" />
                                     <Label Text="Nome da música" />
                                 </FlexLayout>
                             </FlexLayout>
