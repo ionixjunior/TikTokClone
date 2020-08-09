@@ -4,6 +4,7 @@ using TikTokClone.ViewModels;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
+using System.Threading;
 
 namespace TikTokClone.ContentViews
 {
@@ -40,9 +41,24 @@ namespace TikTokClone.ContentViews
                         videoOutOfBounds.Stop();
                         videoOutOfBounds.IsLooping = false;
                     }
+
+                    if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
+                        view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
+                        view.FindByName<Image>("MusicCipher3") is Image cipher3)
+                    {
+                        _cancellationTokenSourceOfTaskCipherAnimations?.Cancel();
+                        _cancellationTokenSourceOfTaskCipherAnimations?.Dispose();
+                        _cancellationTokenSourceOfTaskCipherAnimations = null;
+
+                        ResetCipherState(cipher1);
+                        ResetCipherState(cipher2);
+                        ResetCipherState(cipher3);
+                    }
                 }
             }
         }
+
+        private CancellationTokenSource _cancellationTokenSourceOfTaskCipherAnimations;
 
         public void PlayVideoInOfBounds()
         {
@@ -58,26 +74,32 @@ namespace TikTokClone.ContentViews
                     view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
                     view.FindByName<Image>("MusicCipher3") is Image cipher3)
                 {
-                    Task.Run(async () => await StartCipherAnimations(cipher1, cipher2, cipher3));
+                    _cancellationTokenSourceOfTaskCipherAnimations = new CancellationTokenSource();
+                    Task.Run(async () => await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfTaskCipherAnimations.Token));
                 }
             }
         }
 
-        private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3)
+        private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3, CancellationToken token)
         {
+            token.ThrowIfCancellationRequested();
+
             await Task.WhenAny(
-                AnimateCipher(cipher1, TimeSpan.Zero),
-                AnimateCipher(cipher2, TimeSpan.FromMilliseconds(900)),
-                AnimateCipher(cipher3, TimeSpan.FromMilliseconds(1800))
+                AnimateCipher(cipher1, TimeSpan.Zero, token),
+                AnimateCipher(cipher2, TimeSpan.FromMilliseconds(900), token),
+                AnimateCipher(cipher3, TimeSpan.FromMilliseconds(1800), token)
             );
 
+            token.ThrowIfCancellationRequested();
             await Task.Delay(700);
-            await StartCipherAnimations(cipher1, cipher2, cipher3);
+
+            await StartCipherAnimations(cipher1, cipher2, cipher3, token);
         }
 
-        private async Task AnimateCipher(Image image, TimeSpan delayToAnimate)
+        private async Task AnimateCipher(Image image, TimeSpan delayToAnimate, CancellationToken token)
         {
             await Task.Delay(delayToAnimate);
+            token.ThrowIfCancellationRequested();
 
             ResetCipherState(image);
 
