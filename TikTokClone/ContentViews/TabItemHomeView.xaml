@@ -81,13 +81,10 @@
                                         HeightRequest="70"
                                         WidthRequest="70" />
 
-                                    <Frame
+                                    <Image
                                         Margin="0,-13,0,0"
-                                        Padding="0"
-                                        BackgroundColor="#FF2E58"
-                                        CornerRadius="13"
-                                        HasShadow="false"
                                         HeightRequest="26"
+                                        Source="add"
                                         WidthRequest="26" />
                                 </FlexLayout>
 
