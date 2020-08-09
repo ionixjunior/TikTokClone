@@ -45,7 +45,11 @@
                                 JustifyContent="End">
                                 <FlexLayout AlignItems="Center" FlexLayout.Basis="40">
                                     <Label Style="{StaticResource StrongLabel}" Text="Nome da pessoa" />
-                                    <Label Text="C" />
+                                    <Image
+                                        Margin="5,0,0,0"
+                                        HeightRequest="16"
+                                        Source="verified_account"
+                                        WidthRequest="16" />
                                 </FlexLayout>
 
                                 <Label Text="Descrição do vídeo" />
