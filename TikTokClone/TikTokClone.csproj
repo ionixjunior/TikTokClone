@@ -22,6 +22,7 @@
     <Folder Include="ContentViews\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\Proxima-Nova-Regular.woff2" />
