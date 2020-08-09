@@ -54,7 +54,10 @@ namespace TikTokClone.ContentViews
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await MoveCipherAsync(imageCipher1);
+                        await Task.WhenAll(
+                            MoveCipherAsync(imageCipher1),
+                            ScaleCipherAsync(imageCipher1)
+                        );
                     });
                 });
             }
@@ -66,6 +69,11 @@ namespace TikTokClone.ContentViews
             await image.TranslateTo(-45, -25, 500);
             await image.TranslateTo(-50, -50, 500);
             await image.TranslateTo(-60, -80, 500);
+        }
+
+        private async Task ScaleCipherAsync(Image image)
+        {
+            await image.ScaleTo(1.8, 2000);
         }
     }
 }
