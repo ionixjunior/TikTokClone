@@ -85,6 +85,9 @@ namespace TikTokClone.ContentViews
 
                 if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
                     Task.Run(async () => await songName.StartAnimationAsync(_cancellationTokenSourceOfAnimations.Token));
+
+                if (view.FindByName<Grid>("SongDisc") is Grid grid)
+                    Task.Run(async () => await StartSongDiscRotationAsync(grid, _cancellationTokenSourceOfAnimations.Token));
             }
         }
 
@@ -143,6 +146,25 @@ namespace TikTokClone.ContentViews
         {
             await image.FadeTo(1, 1000);
             await image.FadeTo(0, 1000);
+        }
+
+        private async Task StartSongDiscRotationAsync(View view, CancellationToken token)
+        {
+            token.ThrowIfCancellationRequested();
+
+            var totalAnimationTime = 7000;
+            var totalCycles = 10;
+            var positionToMoveInEachCycle = 360 / totalCycles;
+            var animationTimeInEachCycle = (uint) (totalAnimationTime / totalCycles);
+
+            for (var cycle = 1; cycle <= totalCycles; cycle++)
+            {
+                token.ThrowIfCancellationRequested();
+
+                await view.RotateTo(positionToMoveInEachCycle * cycle, animationTimeInEachCycle);
+            }
+
+            await StartSongDiscRotationAsync(view, token);
         }
     }
 }
