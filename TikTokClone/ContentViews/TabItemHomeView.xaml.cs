@@ -50,16 +50,18 @@ namespace TikTokClone.ContentViews
                     videoInOfBounds.IsLooping = true;
                 }
 
-                if (view.FindByName<Image>("MusicCipher1") is Image imageCipher1)
+                if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
+                    view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
+                    view.FindByName<Image>("MusicCipher3") is Image cipher3)
                 {
                     Task.Run(() =>
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await Task.WhenAll(
-                                MoveCipherAsync(imageCipher1),
-                                ScaleCipherAsync(imageCipher1),
-                                FadeCipherAsync(imageCipher1)
+                                MoveCipherAsync(cipher1),
+                                ScaleCipherAsync(cipher1),
+                                FadeCipherAsync(cipher1)
                             );
                         });
                     });
