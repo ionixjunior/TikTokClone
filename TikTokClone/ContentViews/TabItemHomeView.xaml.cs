@@ -69,29 +69,33 @@ namespace TikTokClone.ContentViews
         
         public async Task PlayVideoInOfBoundsAsync()
         {
-            _cancellationTokenSourceOfAnimations = new CancellationTokenSource();
-
-            if (CarouselViewVideos.VisibleViews.LastOrDefault() is View view)
+            try
             {
-                if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
+                _cancellationTokenSourceOfAnimations = new CancellationTokenSource();
+
+                if (CarouselViewVideos.VisibleViews.LastOrDefault() is View view)
                 {
-                    videoInOfBounds.Play();
-                    videoInOfBounds.IsLooping = true;
+                    if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
+                    {
+                        videoInOfBounds.Play();
+                        videoInOfBounds.IsLooping = true;
+                    }
+
+                    if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
+                        view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
+                        view.FindByName<Image>("MusicCipher3") is Image cipher3)
+                    {
+                        await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token);
+                    }
+
+                    if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
+                        await songName.StartAnimationAsync(_cancellationTokenSourceOfAnimations.Token);
+
+                    if (view.FindByName<Grid>("SongDisc") is Grid grid)
+                        await StartSongDiscRotationAsync(grid, _cancellationTokenSourceOfAnimations.Token);
                 }
-
-                if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
-                    view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
-                    view.FindByName<Image>("MusicCipher3") is Image cipher3)
-                {
-                    await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token);
-                }
-
-                if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                    await songName.StartAnimationAsync(_cancellationTokenSourceOfAnimations.Token);
-
-                if (view.FindByName<Grid>("SongDisc") is Grid grid)
-                    await StartSongDiscRotationAsync(grid, _cancellationTokenSourceOfAnimations.Token);
             }
+            catch (OperationCanceledException) {}
         }
 
         private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3, CancellationToken token)
