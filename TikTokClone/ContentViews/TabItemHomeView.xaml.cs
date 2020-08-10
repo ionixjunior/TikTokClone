@@ -66,34 +66,7 @@ namespace TikTokClone.ContentViews
         }
 
         private CancellationTokenSource _cancellationTokenSourceOfAnimations;
-
-        public void PlayVideoInOfBounds()
-        {
-            _cancellationTokenSourceOfAnimations = new CancellationTokenSource();
-
-            if (CarouselViewVideos.VisibleViews.LastOrDefault() is View view)
-            {
-                if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
-                {
-                    videoInOfBounds.Play();
-                    videoInOfBounds.IsLooping = true;
-                }
-
-                if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
-                    view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
-                    view.FindByName<Image>("MusicCipher3") is Image cipher3)
-                {
-                    Task.Run(async () => await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token));
-                }
-
-                if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                    Task.Run(async () => await songName.StartAnimationAsync(_cancellationTokenSourceOfAnimations.Token));
-
-                if (view.FindByName<Grid>("SongDisc") is Grid grid)
-                    Task.Run(async () => await StartSongDiscRotationAsync(grid, _cancellationTokenSourceOfAnimations.Token));
-            }
-        }
-
+        
         public async Task PlayVideoInOfBoundsAsync()
         {
             _cancellationTokenSourceOfAnimations = new CancellationTokenSource();
