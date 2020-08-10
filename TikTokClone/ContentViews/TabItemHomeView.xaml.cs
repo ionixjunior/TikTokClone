@@ -37,32 +37,35 @@ namespace TikTokClone.ContentViews
             _cancellationTokenSourceOfAnimations?.Dispose();
             _cancellationTokenSourceOfAnimations = null;
 
-            for (var index = 0; index < CarouselViewVideos.VisibleViews.Count - 1; index++)
+            Task.Run(() =>
             {
-                if (CarouselViewVideos.VisibleViews[index] is View view)
+                for (var index = 0; index < CarouselViewVideos.VisibleViews.Count - 1; index++)
                 {
-                    if (view.FindByName<MediaElement>("Video") is MediaElement videoOutOfBounds)
+                    if (CarouselViewVideos.VisibleViews[index] is View view)
                     {
-                        videoOutOfBounds.Stop();
-                        videoOutOfBounds.IsLooping = false;
+                        if (view.FindByName<MediaElement>("Video") is MediaElement videoOutOfBounds)
+                        {
+                            videoOutOfBounds.Stop();
+                            videoOutOfBounds.IsLooping = false;
+                        }
+
+                        if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
+                            view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
+                            view.FindByName<Image>("MusicCipher3") is Image cipher3)
+                        {
+                            ResetCipherState(cipher1);
+                            ResetCipherState(cipher2);
+                            ResetCipherState(cipher3);
+                        }
+
+                        if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
+                            songName.RestoreOriginalText();
+
+                        if (view.FindByName<Grid>("SongDisc") is Grid grid)
+                            ResetSongDiscRotatePosition(grid);
                     }
-
-                    if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
-                        view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
-                        view.FindByName<Image>("MusicCipher3") is Image cipher3)
-                    {
-                        ResetCipherState(cipher1);
-                        ResetCipherState(cipher2);
-                        ResetCipherState(cipher3);
-                    }
-
-                    if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                        songName.RestoreOriginalText();
-
-                    if (view.FindByName<Grid>("SongDisc") is Grid grid)
-                        ResetSongDiscRotatePosition(grid);
                 }
-            }
+            });
         }
 
         private CancellationTokenSource _cancellationTokenSourceOfAnimations;
