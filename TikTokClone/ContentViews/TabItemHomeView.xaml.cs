@@ -81,18 +81,22 @@ namespace TikTokClone.ContentViews
                         videoInOfBounds.IsLooping = true;
                     }
 
+                    var tasks = new List<Task>();
+
                     if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
                         view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
                         view.FindByName<Image>("MusicCipher3") is Image cipher3)
                     {
-                        await StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token);
+                        tasks.Add(StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token));
                     }
 
                     if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                        await songName.StartAnimationAsync(_cancellationTokenSourceOfAnimations.Token);
+                        tasks.Add(songName.StartAnimationAsync(_cancellationTokenSourceOfAnimations.Token));
 
                     if (view.FindByName<Grid>("SongDisc") is Grid grid)
-                        await StartSongDiscRotationAsync(grid, _cancellationTokenSourceOfAnimations.Token);
+                        tasks.Add(StartSongDiscRotationAsync(grid, _cancellationTokenSourceOfAnimations.Token));
+
+                    Task.WhenAny(tasks.ToArray());
                 }
             }
             catch (OperationCanceledException) {}
