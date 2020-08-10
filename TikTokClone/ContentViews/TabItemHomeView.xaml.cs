@@ -73,13 +73,10 @@ namespace TikTokClone.ContentViews
 
             if (CarouselViewVideos.VisibleViews.LastOrDefault() is View view)
             {
-                if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
-                {
-                    videoInOfBounds.Play();
-                    videoInOfBounds.IsLooping = true;
-                }
-
                 var tasks = new List<Task>();
+
+                if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
+                    tasks.Add(PlayVideo(videoInOfBounds));
 
                 if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
                     view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
@@ -96,6 +93,13 @@ namespace TikTokClone.ContentViews
 
                 Task.WhenAny(tasks.ToArray());
             }
+        }
+
+        private Task PlayVideo(MediaElement video)
+        {
+            video.Play();
+            video.IsLooping = true;
+            return Task.FromResult(true);
         }
 
         private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3, CancellationToken token)
