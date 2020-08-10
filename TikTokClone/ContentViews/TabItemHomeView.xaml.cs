@@ -17,18 +17,18 @@ namespace TikTokClone.ContentViews
             BindingContext = new TabItemHomeViewModel();
         }
 
-        private async void OnCurrentItemChanged(object sender, CurrentItemChangedEventArgs args)
+        private void OnCurrentItemChanged(object sender, CurrentItemChangedEventArgs args)
         {
             if (IsFirstVideoToAppear(args))
-                await PlayVideoInOfBoundsAsync();
+                PlayVideoInOfBounds();
         }
 
         private bool IsFirstVideoToAppear(CurrentItemChangedEventArgs args) => args.PreviousItem is null;
 
-        private async void OnPositionChanged(object sender, PositionChangedEventArgs args)
+        private void OnPositionChanged(object sender, PositionChangedEventArgs args)
         {
             StopVideoOutOfBounds();
-            await PlayVideoInOfBoundsAsync();
+            PlayVideoInOfBounds();
         }
 
         public void StopVideoOutOfBounds()
@@ -70,7 +70,7 @@ namespace TikTokClone.ContentViews
 
         private CancellationTokenSource _cancellationTokenSourceOfAnimations;
         
-        public async Task PlayVideoInOfBoundsAsync()
+        public void PlayVideoInOfBounds()
         {
             _cancellationTokenSourceOfAnimations = new CancellationTokenSource();
 

@@ -65,7 +65,7 @@ namespace TikTokClone.Views
 
                     await Task.Delay(100);
                     carouselViewElement.IsScrollAnimated = true;
-                    await _homeView.Value.PlayVideoInOfBoundsAsync();
+                    _homeView.Value.PlayVideoInOfBounds();
                     HideStatusBar();
                     return;
                 }
