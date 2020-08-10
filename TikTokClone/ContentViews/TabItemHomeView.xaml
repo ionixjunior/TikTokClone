@@ -94,6 +94,7 @@
                                         FlexLayout.Basis="80">
                                         <Frame
                                             Padding="0"
+                                            BackgroundColor="White"
                                             CornerRadius="25"
                                             HasShadow="false"
                                             HeightRequest="50"
