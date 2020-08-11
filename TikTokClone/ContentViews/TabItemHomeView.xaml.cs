@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System;
 using System.Threading;
 using TikTokClone.Controls;
+using MvvmHelpers;
 
 namespace TikTokClone.ContentViews
 {
@@ -65,7 +66,7 @@ namespace TikTokClone.ContentViews
                             ResetSongDiscRotatePosition(grid);
                     }
                 }
-            });
+            }).SafeFireAndForget(ExceptionFromTask);
         }
 
         private CancellationTokenSource _cancellationTokenSourceOfAnimations;
@@ -94,8 +95,14 @@ namespace TikTokClone.ContentViews
                 if (view.FindByName<Grid>("SongDisc") is Grid grid)
                     tasks.Add(StartSongDiscRotationAsync(grid, _cancellationTokenSourceOfAnimations.Token));
 
-                Task.WhenAny(tasks.ToArray());
+                Task.WhenAny(tasks.ToArray())
+                    .SafeFireAndForget(ExceptionFromTask);
             }
+        }
+
+        private void ExceptionFromTask(Exception exception)
+        {
+            System.Diagnostics.Debug.WriteLine(exception.Message);
         }
 
         private Task PlayVideo(MediaElement video)
