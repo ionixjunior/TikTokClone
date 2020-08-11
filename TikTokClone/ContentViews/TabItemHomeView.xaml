@@ -3,7 +3,8 @@
     x:Class="TikTokClone.ContentViews.TabItemHomeView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:TikTokClone.Controls">
+    xmlns:controls="clr-namespace:TikTokClone.Controls"
+    xmlns:models="clr-namespace:TikTokClone.Models">
     <ContentView.Content>
         <AbsoluteLayout>
             <CarouselView
@@ -19,7 +20,7 @@
                 </CarouselView.ItemsLayout>
 
                 <CarouselView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="models:Video">
                         <Grid>
                             <MediaElement
                                 x:Name="Video"
