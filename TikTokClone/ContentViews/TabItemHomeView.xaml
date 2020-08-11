@@ -4,9 +4,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:TikTokClone.Controls"
-    xmlns:models="clr-namespace:TikTokClone.Models">
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:TikTokClone.Models"
+    mc:Ignorable="d">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <AbsoluteLayout d:BackgroundColor="Black">
             <CarouselView
                 x:Name="CarouselViewVideos"
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -15,6 +18,22 @@
                 ItemsSource="{Binding Videos, Mode=OneWay}"
                 PositionChanged="OnPositionChanged"
                 VerticalScrollBarVisibility="Never">
+
+                <d:CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type models:Video}">
+                        <models:Video
+                            AccountAvatar="https://avatars0.githubusercontent.com/u/519642?s=460"
+                            AccountName="@ionixjunior"
+                            Description="Descrição do vídeo"
+                            IsVerifiedAccount="true"
+                            Likes="200"
+                            Messages="300"
+                            Shares="400"
+                            SongAvatar="https://avatars0.githubusercontent.com/u/519642?s=460"
+                            SongName="Nome da música" />
+                    </x:Array>
+                </d:CarouselView.ItemsSource>
+
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" />
                 </CarouselView.ItemsLayout>
@@ -172,7 +191,10 @@
                                                 Source="disc"
                                                 WidthRequest="50" />
 
-                                            <Image Source="{Binding SongAvatar, Mode=OneTime}">
+                                            <Image
+                                                HeightRequest="25"
+                                                Source="{Binding SongAvatar, Mode=OneTime}"
+                                                WidthRequest="25">
                                                 <Image.Clip>
                                                     <EllipseGeometry
                                                         Center="25,25"
@@ -185,6 +207,7 @@
                                         <Image
                                             x:Name="MusicCipher1"
                                             Margin="0,0,0,-80"
+                                            d:Opacity="1"
                                             HeightRequest="16"
                                             HorizontalOptions="Center"
                                             Opacity="0"
@@ -195,6 +218,9 @@
                                         <Image
                                             x:Name="MusicCipher2"
                                             Margin="0,0,0,-80"
+                                            d:Opacity="1"
+                                            d:TranslationX="-25"
+                                            d:TranslationY="-10"
                                             HeightRequest="16"
                                             HorizontalOptions="Center"
                                             Opacity="0"
@@ -205,6 +231,9 @@
                                         <Image
                                             x:Name="MusicCipher3"
                                             Margin="0,0,0,-80"
+                                            d:Opacity="1"
+                                            d:TranslationX="-45"
+                                            d:TranslationY="-35"
                                             HeightRequest="16"
                                             HorizontalOptions="Center"
                                             Opacity="0"
@@ -217,7 +246,9 @@
                         </Grid>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
+
             </CarouselView>
+
 
             <FlexLayout
                 Padding="0,14"
@@ -226,7 +257,8 @@
                 AlignItems="End"
                 JustifyContent="Center">
                 <Label
-                    FontSize="Header"
+                    FontSize="{OnPlatform Android=Subtitle,
+                                          iOS=Header}"
                     Text="Following"
                     TextColor="White" />
 
@@ -237,7 +269,8 @@
                     WidthRequest="0.8" />
 
                 <Label
-                    FontSize="Header"
+                    FontSize="{OnPlatform Android=Subtitle,
+                                          iOS=Header}"
                     Style="{StaticResource StrongLabel}"
                     Text="For You"
                     TextColor="White" />

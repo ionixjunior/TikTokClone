@@ -18,10 +18,15 @@ namespace TikTokClone.ContentViews
             BindingContext = new TabItemHomeViewModel();
         }
 
-        private void OnCurrentItemChanged(object sender, CurrentItemChangedEventArgs args)
+        private async void OnCurrentItemChanged(object sender, CurrentItemChangedEventArgs args)
         {
             if (IsFirstVideoToAppear(args))
+            {
+                if (Device.RuntimePlatform == Device.Android)
+                    await Task.Delay(200);
+
                 PlayVideoInOfBounds();
+            }
         }
 
         private bool IsFirstVideoToAppear(CurrentItemChangedEventArgs args) => args.PreviousItem is null;
@@ -38,35 +43,33 @@ namespace TikTokClone.ContentViews
             _cancellationTokenSourceOfAnimations?.Dispose();
             _cancellationTokenSourceOfAnimations = null;
 
-            Task.Run(() =>
+            var tasks = new List<Task>();
+
+            for (var index = 0; index < CarouselViewVideos.VisibleViews.Count - 1; index++)
             {
-                for (var index = 0; index < CarouselViewVideos.VisibleViews.Count - 1; index++)
+                if (CarouselViewVideos.VisibleViews[index] is View view)
                 {
-                    if (CarouselViewVideos.VisibleViews[index] is View view)
-                    {
-                        if (view.FindByName<MediaElement>("Video") is MediaElement videoOutOfBounds)
-                        {
-                            videoOutOfBounds.Stop();
-                            videoOutOfBounds.IsLooping = false;
-                        }
+                    if (view.FindByName<MediaElement>("Video") is MediaElement videoOutOfBounds)
+                        tasks.Add(StopVideoAsync(videoOutOfBounds));
 
-                        if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
-                            view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
-                            view.FindByName<Image>("MusicCipher3") is Image cipher3)
-                        {
-                            ResetCipherState(cipher1);
-                            ResetCipherState(cipher2);
-                            ResetCipherState(cipher3);
-                        }
+                    if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
+                        view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
+                        view.FindByName<Image>("MusicCipher3") is Image cipher3)
+                        tasks.Add(ResetCipherStateAsync(cipher1, cipher2, cipher3));
 
-                        if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
-                            songName.RestoreOriginalText();
+                    if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
+                        tasks.Add(RestoreOriginalTextAsync(songName));
 
-                        if (view.FindByName<Grid>("SongDisc") is Grid grid)
-                            ResetSongDiscRotatePosition(grid);
-                    }
+                    if (view.FindByName<Grid>("SongDisc") is Grid grid)
+                        tasks.Add(ResetSongDiscRotatePositionAsync(grid));
                 }
-            }).SafeFireAndForget(ExceptionFromTask);
+            }
+
+            if (tasks.Any())
+            {
+                Task.WhenAny(tasks.ToArray())
+                    .SafeFireAndForget(ExceptionFromTask);
+            }
         }
 
         private CancellationTokenSource _cancellationTokenSourceOfAnimations;
@@ -80,7 +83,7 @@ namespace TikTokClone.ContentViews
                 var tasks = new List<Task>();
 
                 if (view.FindByName<MediaElement>("Video") is MediaElement videoInOfBounds)
-                    tasks.Add(PlayVideo(videoInOfBounds));
+                    tasks.Add(PlayVideoAsync(videoInOfBounds));
 
                 if (view.FindByName<Image>("MusicCipher1") is Image cipher1 &&
                     view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
@@ -105,10 +108,31 @@ namespace TikTokClone.ContentViews
             System.Diagnostics.Debug.WriteLine(exception.Message);
         }
 
-        private Task PlayVideo(MediaElement video)
+        private Task PlayVideoAsync(MediaElement video)
         {
             video.Play();
             video.IsLooping = true;
+            return Task.FromResult(true);
+        }
+
+        private Task StopVideoAsync(MediaElement video)
+        {
+            video.Stop();
+            video.IsLooping = false;
+            return Task.FromResult(true);
+        }
+
+        private Task ResetCipherStateAsync(Image cipher1, Image cipher2, Image cipher3)
+        {
+            ResetCipherState(cipher1);
+            ResetCipherState(cipher2);
+            ResetCipherState(cipher3);
+            return Task.FromResult(true);
+        }
+
+        private Task RestoreOriginalTextAsync(MarqueeLabel songName)
+        {
+            songName.RestoreOriginalText();
             return Task.FromResult(true);
         }
 
@@ -190,5 +214,11 @@ namespace TikTokClone.ContentViews
         }
 
         private void ResetSongDiscRotatePosition(View view) => view.Rotation = 0;
+
+        private Task ResetSongDiscRotatePositionAsync(View view)
+        {
+            ResetSongDiscRotatePosition(view);
+            return Task.FromResult(true);
+        }
     }
 }

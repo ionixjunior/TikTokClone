@@ -7,7 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <AbsoluteLayout Margin="-1,-1,0,0">
+    <AbsoluteLayout Margin="-1,-1,0,0" d:BackgroundColor="Black">
         <ContentView
             x:Name="TabItemContentView"
             AbsoluteLayout.LayoutBounds="0,0,1,1"

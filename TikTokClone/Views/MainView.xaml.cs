@@ -36,14 +36,8 @@ namespace TikTokClone.Views
             _inboxView = new Lazy<TabItemInboxView>();
             _meView = new Lazy<TabItemMeView>();
 
-            TabItemContentView.Content = _homeView.Value;
-            TabBar.BackgroundColor = _tabBarTransparent;
-
-            HideStatusBar();
+            SetHomeContentTab();
         }
-
-        private void HideStatusBar() => On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.True);
-        private void ShowStatusBar() => On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.False);
 
         private async void OnTabTapped(object sender, EventArgs args)
         {
@@ -56,55 +50,91 @@ namespace TikTokClone.Views
             {
                 if (tabItem == "home")
                 {
-                    var carouselViewElement = _homeView.Value.FindByName<CarouselView>("CarouselViewVideos");
-                    carouselViewElement.IsScrollAnimated = false;
-
-                    TabItemContentView.Content = _homeView.Value;
-                    TabBar.BackgroundColor = _tabBarTransparent;
-
-                    await Task.Delay(100);
-                    carouselViewElement.IsScrollAnimated = true;
-                    _homeView.Value.PlayVideoInOfBounds();
-                    HideStatusBar();
+                    await SetHomeContentTabAndPlayVideoAsync();
                     return;
                 }
 
                 if (tabItem == "discover")
                 {
-                    TabItemContentView.Content = _discoverView.Value;
-                    TabBar.BackgroundColor = _tabBarWhite;
-                    _homeView.Value.StopVideoOutOfBounds();
-                    ShowStatusBar();
+                    SetDiscoverContentTab();
                     return;
                 }
 
                 if (tabItem == "add")
                 {
-                    TabItemContentView.Content = _addView.Value;
-                    TabBar.BackgroundColor = _tabBarWhite;
-                    _homeView.Value.StopVideoOutOfBounds();
-                    ShowStatusBar();
+                    SetAddContentTab();
                     return;
                 }
 
                 if (tabItem == "inbox")
                 {
-                    TabItemContentView.Content = _inboxView.Value;
-                    TabBar.BackgroundColor = _tabBarWhite;
-                    _homeView.Value.StopVideoOutOfBounds();
-                    ShowStatusBar();
+                    SetInboxContentTab();
                     return;
                 }
 
                 if (tabItem == "me")
                 {
-                    TabItemContentView.Content = _meView.Value;
-                    TabBar.BackgroundColor = _tabBarWhite;
-                    _homeView.Value.StopVideoOutOfBounds();
-                    ShowStatusBar();
+                    SetMeContentTab();
                     return;
                 }
             }
         }
+
+        private async Task SetHomeContentTabAndPlayVideoAsync()
+        {
+            SetHomeContentTab();
+            await PlayVideoAsync();
+        }
+
+        private void SetHomeContentTab()
+        {
+            TabItemContentView.Content = _homeView.Value;
+            TabBar.BackgroundColor = _tabBarTransparent;
+            HideStatusBar();
+        }
+
+        private async Task PlayVideoAsync()
+        {
+            var carouselViewElement = _homeView.Value.FindByName<CarouselView>("CarouselViewVideos");
+            carouselViewElement.IsScrollAnimated = false;
+            await Task.Delay(100);
+            carouselViewElement.IsScrollAnimated = true;
+            _homeView.Value.PlayVideoInOfBounds();
+        }
+
+        private void SetDiscoverContentTab()
+        {
+            TabItemContentView.Content = _discoverView.Value;
+            TabBar.BackgroundColor = _tabBarWhite;
+            _homeView.Value.StopVideoOutOfBounds();
+            ShowStatusBar();
+        }
+
+        private void SetAddContentTab()
+        {
+            TabItemContentView.Content = _addView.Value;
+            TabBar.BackgroundColor = _tabBarWhite;
+            _homeView.Value.StopVideoOutOfBounds();
+            ShowStatusBar();
+        }
+
+        private void SetInboxContentTab()
+        {
+            TabItemContentView.Content = _inboxView.Value;
+            TabBar.BackgroundColor = _tabBarWhite;
+            _homeView.Value.StopVideoOutOfBounds();
+            ShowStatusBar();
+        }
+
+        private void SetMeContentTab()
+        {
+            TabItemContentView.Content = _meView.Value;
+            TabBar.BackgroundColor = _tabBarWhite;
+            _homeView.Value.StopVideoOutOfBounds();
+            ShowStatusBar();
+        }
+
+        private void HideStatusBar() => On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.True);
+        private void ShowStatusBar() => On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.False);
     }
 }
