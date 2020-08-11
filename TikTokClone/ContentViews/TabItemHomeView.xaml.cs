@@ -86,7 +86,7 @@ namespace TikTokClone.ContentViews
                     view.FindByName<Image>("MusicCipher2") is Image cipher2 &&
                     view.FindByName<Image>("MusicCipher3") is Image cipher3)
                 {
-                    tasks.Add(StartCipherAnimations(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token));
+                    tasks.Add(StartCipherAnimationsAsync(cipher1, cipher2, cipher3, _cancellationTokenSourceOfAnimations.Token));
                 }
 
                 if (view.FindByName<MarqueeLabel>("AnimatedSongName") is MarqueeLabel songName)
@@ -112,23 +112,23 @@ namespace TikTokClone.ContentViews
             return Task.FromResult(true);
         }
 
-        private async Task StartCipherAnimations(Image cipher1, Image cipher2, Image cipher3, CancellationToken token)
+        private async Task StartCipherAnimationsAsync(Image cipher1, Image cipher2, Image cipher3, CancellationToken token)
         {
             token.ThrowIfCancellationRequested();
 
             await Task.WhenAny(
-                AnimateCipher(cipher1, TimeSpan.Zero, token),
-                AnimateCipher(cipher2, TimeSpan.FromMilliseconds(900), token),
-                AnimateCipher(cipher3, TimeSpan.FromMilliseconds(1800), token)
+                AnimateCipherAsync(cipher1, TimeSpan.Zero, token),
+                AnimateCipherAsync(cipher2, TimeSpan.FromMilliseconds(900), token),
+                AnimateCipherAsync(cipher3, TimeSpan.FromMilliseconds(1800), token)
             );
 
             token.ThrowIfCancellationRequested();
             await Task.Delay(700);
 
-            await StartCipherAnimations(cipher1, cipher2, cipher3, token);
+            await StartCipherAnimationsAsync(cipher1, cipher2, cipher3, token);
         }
 
-        private async Task AnimateCipher(Image image, TimeSpan delayToAnimate, CancellationToken token)
+        private async Task AnimateCipherAsync(Image image, TimeSpan delayToAnimate, CancellationToken token)
         {
             await Task.Delay(delayToAnimate);
             token.ThrowIfCancellationRequested();
