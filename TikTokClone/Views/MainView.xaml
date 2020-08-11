@@ -22,38 +22,113 @@
             <FlexLayout
                 x:Name="TabBar"
                 AlignItems="Center"
-                BindableLayout.ItemsSource="{Binding Tabs}"
                 FlexLayout.Grow="1"
                 JustifyContent="SpaceBetween">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <FlexLayout
-                            AlignItems="Center"
-                            FlexLayout.Grow="1"
-                            JustifyContent="Center">
-                            <FlexLayout.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="OnTabTapped" />
-                            </FlexLayout.GestureRecognizers>
 
-                            <FlexLayout
-                                AlignItems="Center"
-                                Direction="Column"
-                                FlexLayout.Grow="1"
-                                JustifyContent="Center">
-                                <Image
-                                    Margin="0,0,0,0"
-                                    HeightRequest="{Binding IconHeight}"
-                                    Source="{Binding Icon}"
-                                    WidthRequest="{Binding IconWidth}" />
-                                <Label
-                                    Margin="0,2,0,0"
-                                    FontSize="Micro"
-                                    Text="{Binding Name}"
-                                    TextColor="White" />
-                            </FlexLayout>
-                        </FlexLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+                <FlexLayout
+                    AlignItems="Center"
+                    Direction="Column"
+                    FlexLayout.Grow="1"
+                    JustifyContent="Center">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="home" Tapped="OnTabTapped" />
+                    </FlexLayout.GestureRecognizers>
+
+                    <Image
+                        Margin="0,0,0,0"
+                        HeightRequest="20"
+                        Source="tab_home_selected"
+                        WidthRequest="20" />
+                    <Label
+                        Margin="0,2,0,0"
+                        FontSize="Micro"
+                        Text="Home"
+                        TextColor="White" />
+                </FlexLayout>
+
+
+                <FlexLayout
+                    AlignItems="Center"
+                    Direction="Column"
+                    FlexLayout.Grow="1"
+                    JustifyContent="Center">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="discover" Tapped="OnTabTapped" />
+                    </FlexLayout.GestureRecognizers>
+
+                    <Image
+                        Margin="0,0,0,0"
+                        HeightRequest="20"
+                        Source="tab_discover_init"
+                        WidthRequest="20" />
+                    <Label
+                        Margin="0,2,0,0"
+                        FontSize="Micro"
+                        Text="Discover"
+                        TextColor="White" />
+                </FlexLayout>
+
+
+                <FlexLayout
+                    AlignItems="Center"
+                    Direction="Column"
+                    FlexLayout.Grow="1"
+                    JustifyContent="Start">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="add" Tapped="OnTabTapped" />
+                    </FlexLayout.GestureRecognizers>
+
+                    <Image
+                        Margin="0,0,0,0"
+                        HeightRequest="45"
+                        Source="tab_add_init"
+                        WidthRequest="45" />
+                </FlexLayout>
+
+
+                <FlexLayout
+                    AlignItems="Center"
+                    Direction="Column"
+                    FlexLayout.Grow="1"
+                    JustifyContent="Center">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="inbox" Tapped="OnTabTapped" />
+                    </FlexLayout.GestureRecognizers>
+
+                    <Image
+                        Margin="0,0,0,0"
+                        HeightRequest="20"
+                        Source="tab_inbox_init"
+                        WidthRequest="20" />
+                    <Label
+                        Margin="0,2,0,0"
+                        FontSize="Micro"
+                        Text="Inbox"
+                        TextColor="White" />
+                </FlexLayout>
+
+
+                <FlexLayout
+                    AlignItems="Center"
+                    Direction="Column"
+                    FlexLayout.Grow="1"
+                    JustifyContent="Center">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="me" Tapped="OnTabTapped" />
+                    </FlexLayout.GestureRecognizers>
+
+                    <Image
+                        Margin="0,0,0,0"
+                        HeightRequest="20"
+                        Source="tab_me_init"
+                        WidthRequest="20" />
+                    <Label
+                        Margin="0,2,0,0"
+                        FontSize="Micro"
+                        Text="Me"
+                        TextColor="White" />
+                </FlexLayout>
+
             </FlexLayout>
         </FlexLayout>
     </AbsoluteLayout>

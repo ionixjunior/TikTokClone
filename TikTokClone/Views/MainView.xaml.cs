@@ -53,9 +53,9 @@ namespace TikTokClone.Views
 
         private async Task OnTabTappedAsync(object sender, EventArgs args)
         {
-            if (args is TappedEventArgs tappedEventArgs && tappedEventArgs.Parameter is TabItem tabItem)
+            if (args is TappedEventArgs tappedEventArgs && tappedEventArgs.Parameter is string tabItem)
             {
-                if (tabItem.DataTemplateType == typeof(TabItemHomeView))
+                if (tabItem == "home")
                 {
                     var carouselViewElement = _homeView.Value.FindByName<CarouselView>("CarouselViewVideos");
                     carouselViewElement.IsScrollAnimated = false;
@@ -70,7 +70,7 @@ namespace TikTokClone.Views
                     return;
                 }
 
-                if (tabItem.DataTemplateType == typeof(TabItemDiscoverView))
+                if (tabItem == "discover")
                 {
                     TabItemContentView.Content = _discoverView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
@@ -79,7 +79,7 @@ namespace TikTokClone.Views
                     return;
                 }
 
-                if (tabItem.DataTemplateType == typeof(TabItemAddView))
+                if (tabItem == "add")
                 {
                     TabItemContentView.Content = _addView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
@@ -88,7 +88,7 @@ namespace TikTokClone.Views
                     return;
                 }
 
-                if (tabItem.DataTemplateType == typeof(TabItemInboxView))
+                if (tabItem == "inbox")
                 {
                     TabItemContentView.Content = _inboxView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
@@ -97,7 +97,7 @@ namespace TikTokClone.Views
                     return;
                 }
 
-                if (tabItem.DataTemplateType == typeof(TabItemMeView))
+                if (tabItem == "me")
                 {
                     TabItemContentView.Content = _meView.Value;
                     TabBar.BackgroundColor = _tabBarWhite;
