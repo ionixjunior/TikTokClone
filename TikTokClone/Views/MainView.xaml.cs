@@ -38,7 +38,6 @@ namespace TikTokClone.Views
 
             TabItemContentView.Content = _homeView.Value;
             TabBar.BackgroundColor = _tabBarTransparent;
-            BindingContext = new MainViewModel();
 
             HideStatusBar();
         }
