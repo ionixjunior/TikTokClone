@@ -7,6 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:TikTokClone.Models"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     mc:Ignorable="d">
     <ContentView.Content>
         <AbsoluteLayout d:BackgroundColor="Black">
@@ -41,7 +42,7 @@
                 <CarouselView.ItemTemplate>
                     <DataTemplate x:DataType="models:Video">
                         <Grid>
-                            <MediaElement
+                            <xct:MediaElement
                                 x:Name="Video"
                                 Aspect="AspectFill"
                                 AutoPlay="false"

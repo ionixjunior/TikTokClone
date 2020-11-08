@@ -7,6 +7,7 @@ using System;
 using System.Threading;
 using TikTokClone.Controls;
 using MvvmHelpers;
+using MediaElement = Xamarin.CommunityToolkit.UI.Views.MediaElement;
 
 namespace TikTokClone.ContentViews
 {
