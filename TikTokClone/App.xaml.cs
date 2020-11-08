@@ -9,7 +9,7 @@ namespace TikTokClone
     {
         public App()
         {
-            Device.SetFlags(new string[] { "MediaElement_Experimental", "Shapes_Experimental" });
+            Device.SetFlags(new string[] { "Shapes_Experimental" });
 
             InitializeComponent();
 
