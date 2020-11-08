@@ -46,6 +46,7 @@
                                 x:Name="Video"
                                 Aspect="AspectFill"
                                 AutoPlay="false"
+                                ShowsPlaybackControls="false"
                                 Source="{Binding Link, Mode=OneTime}" />
 
                             <FlexLayout Padding="10,0,10,56">
